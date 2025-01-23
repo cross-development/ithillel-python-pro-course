@@ -127,3 +127,5 @@ assert user.email == "jane.smith@example.com", "Email should be jane.smith@examp
 # user.email = "invalid_email"  # Should raise an error "Invalid email format"
 # user.first_name = ""  # Should raise an error "First name cannot be empty"
 # user.last_name = ""  # Should raise an error "Last name cannot be empty"
+
+print("All tests passed!")
