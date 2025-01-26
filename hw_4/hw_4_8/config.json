@@ -1,0 +1,9 @@
+{
+    "app_name": "My Application",
+    "version": "1.0.0",
+    "author": "Vitalii Derda",
+    "features": {
+        "logging": true,
+        "debug_mode": false
+    }
+}
