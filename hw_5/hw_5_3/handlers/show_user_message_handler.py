@@ -1,4 +1,4 @@
-from hw_5.hw_5_3.event_types import EventType
+from hw_5.hw_5_3.enums.event_type import EventType
 from hw_5.hw_5_3.exceptions.game_event_exception import GameEventException
 
 

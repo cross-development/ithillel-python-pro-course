@@ -5,9 +5,6 @@ from abc import ABC, abstractmethod
 class FileProcessor(ABC):
     """
     Abstract base class for processing files.
-
-    Args:
-        filename (str): The path to the file.
     """
 
     def __init__(self, filename: str) -> None:

@@ -1,15 +1,11 @@
 from typing import Dict, Any
 
-from hw_5.hw_5_3.event_types import EventType
+from hw_5.hw_5_3.enums.event_type import EventType
 
 
 class GameEventException(Exception):
     """
     Custom exception raised for game events.
-
-    Args:
-        event_type (EventType): The type of the game event.
-        details (Dict[str, Any]): Details about the event.
     """
 
     def __init__(self, event_type: EventType, details: Dict[str, Any]) -> None:

@@ -1,6 +1,6 @@
 from typing import List, Callable, Dict
 
-from hw_5.hw_5_3.event_types import EventType
+from hw_5.hw_5_3.enums.event_type import EventType
 from hw_5.hw_5_3.exceptions.game_event_exception import GameEventException
 
 
@@ -17,7 +17,6 @@ class EventDispatcher:
         """
         Initializes the EventDispatcher.
         """
-
         self._subscribers: Dict[EventType, List[Callable[[GameEventException], None]]] = {}
 
     def subscribe(self, event_type: EventType, handler: Callable[[GameEventException], None]) -> None:

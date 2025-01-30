@@ -1,12 +1,12 @@
 from typing import Dict
 from decimal import Decimal, InvalidOperation
 
-from strategies.operational_strategy import OperationalStrategy
-from strategies.addition import Addition
-from strategies.division import Division
-from strategies.subtraction import Subtraction
-from strategies.multiplication import Multiplication
-from exceptions.unknown_operational_error import UnknownOperationalError
+from hw_5.hw_5_1.strategies.operational_strategy import OperationalStrategy
+from hw_5.hw_5_1.strategies.addition import Addition
+from hw_5.hw_5_1.strategies.division import Division
+from hw_5.hw_5_1.strategies.subtraction import Subtraction
+from hw_5.hw_5_1.strategies.multiplication import Multiplication
+from hw_5.hw_5_1.exceptions.unknown_operational_error import UnknownOperationalError
 
 
 class Calculator:

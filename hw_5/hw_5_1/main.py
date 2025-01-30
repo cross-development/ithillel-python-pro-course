@@ -1,12 +1,12 @@
-from calculator import Calculator
+from hw_5.hw_5_1.calculator import Calculator
 
-# Console-based testing
 if __name__ == '__main__':
     calculator = Calculator()
 
     while True:
         try:
-            expression = input("Enter calculation (e.g., 12.5 + 3.2) or 'exit' to quit: ").strip()
+            expression = input(
+                "Enter calculation (e.g., 12.5 + 3.2; allowed operators: +, -, /, *) or 'exit' to quit: ").strip()
 
             if expression.lower() == 'exit':
                 break
