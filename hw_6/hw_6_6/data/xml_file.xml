@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <item>
+        <id>1</id>
+        <name>John Doe</name>
+        <email>john.doe@example.com</email>
+        <phone>+1234567890</phone>
+    </item>
+    <item>
+        <id>2</id>
+        <name>Jane Smith</name>
+        <email>jane.smith@example.com</email>
+        <phone>+0987654321</phone>
+    </item>
+    <item>
+        <id>3</id>
+        <name>Alice Johnson</name>
+        <email>alice.johnson@example.com</email>
+        <phone>+1122334455</phone>
+    </item>
+</data>
