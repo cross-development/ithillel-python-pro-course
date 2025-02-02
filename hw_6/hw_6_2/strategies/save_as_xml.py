@@ -17,13 +17,13 @@ class SaveAsXml(SaveStrategy):
             filename (str): The name of the file to save the content to.
         """
 
-        root = ET.Element('root')
-        page_content = ET.SubElement(root, 'content')
+        root = ET.Element("root")
+        page_content = ET.SubElement(root, "content")
         page_content.text = content
 
         tree = ET.ElementTree(root)
 
-        with open(filename, 'wb') as file:
-            tree.write(file, encoding='utf-8', xml_declaration=True)
+        with open(filename, "wb") as file:
+            tree.write(file, encoding="utf-8", xml_declaration=True)
 
-        print(f'XML-file has been saved: {filename}')
+        print(f"XML-file has been saved: {filename}")

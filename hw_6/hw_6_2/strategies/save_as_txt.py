@@ -15,7 +15,7 @@ class SaveAsTxt(SaveStrategy):
             filename (str): The name of the file to save the content to.
         """
 
-        with open(filename, 'w', encoding='utf-8') as file:
+        with open(filename, "w", encoding="utf-8") as file:
             file.write(content)
 
-        print(f'TXT-file has been saved: {filename}')
+        print(f"TXT-file has been saved: {filename}")

@@ -17,11 +17,11 @@ def load_products() -> Optional[ET.Element]:
 
         return tree.getroot()
     except FileNotFoundError:
-        print('File not found!')
+        print("File not found!")
 
         return None
     except ET.ParseError:
-        print('XML parsing error!')
+        print("XML parsing error!")
 
         return None
 
@@ -36,12 +36,12 @@ def list_products() -> None:
     if root is None:
         return
 
-    print('Products in the store:')
+    print("Products in the store:")
 
-    for product in root.findall('product'):
-        name = product.find('name').text
-        quantity = product.find('quantity').text
-        print(f'  - {name}: {quantity} pcs.')
+    for product in root.findall("product"):
+        name = product.find("name").text
+        quantity = product.find("quantity").text
+        print(f"  - {name}: {quantity} pcs.")
 
 
 def update_product_quantity(product_name: str, new_quantity: int) -> None:
@@ -58,26 +58,26 @@ def update_product_quantity(product_name: str, new_quantity: int) -> None:
     if root is None:
         return
 
-    for product in root.findall('product'):
-        name = product.find('name').text
+    for product in root.findall("product"):
+        name = product.find("name").text
 
         if name.lower() == product_name.lower():
-            product.find('quantity').text = str(new_quantity)
+            product.find("quantity").text = str(new_quantity)
 
             tree = ET.ElementTree(root)
-            tree.write(FILENAME, encoding='utf-8', xml_declaration=True)
+            tree.write(FILENAME, encoding="utf-8", xml_declaration=True)
 
-            print(f'Updated the quantity of "{name}" to {new_quantity} pcs.')
+            print(f"Updated the quantity of '{name}' to {new_quantity} pcs.")
             return
 
-    print(f'Product {product_name} not found!')
+    print(f"Product {product_name} not found!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     list_products()
 
-    product_name = input('Enter the name of the product to update: ')
-    new_quantity = int(input('New quantity: '))
+    product_name = input("Enter the name of the product to update: ")
+    new_quantity = int(input("New quantity: "))
 
     update_product_quantity(product_name, new_quantity)
 

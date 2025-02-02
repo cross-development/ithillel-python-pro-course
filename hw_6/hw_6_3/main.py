@@ -1,7 +1,7 @@
 import csv
 from typing import List
 
-FILENAME = 'students.csv'
+FILENAME = "students.csv"
 
 
 def calculate_average_mark() -> None:
@@ -16,17 +16,17 @@ def calculate_average_mark() -> None:
 
     marks: List[int] = []
 
-    with open(FILENAME, mode='r', newline='', encoding='utf-8') as file:
+    with open(FILENAME, mode="r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
         for row in reader:
-            marks.append(int(row['Mark']))
+            marks.append(int(row["Mark"]))
 
     if marks:
         avg_mark = sum(marks) / len(marks)
-        print(f'The average grade of students: {avg_mark:.2f}')
+        print(f"The average grade of students: {avg_mark:.2f}")
     else:
-        print('There is no data in the file.')
+        print("There is no data in the file.")
 
 
 def add_student(name: str, age: int, mark: int) -> None:
@@ -39,19 +39,19 @@ def add_student(name: str, age: int, mark: int) -> None:
         mark (int): The student's mark.
     """
 
-    with open(FILENAME, mode='a', newline='', encoding='utf-8') as file:
+    with open(FILENAME, mode="a", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
         writer.writerow([name, age, mark])
 
-    print(f'Student {name} has been added!')
+    print(f"Student {name} has been added!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     calculate_average_mark()
 
-    new_name = input('Enter the student name: ')
-    new_age = int(input('Age: '))
-    new_mark = int(input('Mark: '))
+    new_name = input("Enter the student name: ")
+    new_age = int(input("Age: "))
+    new_mark = int(input("Mark: "))
 
     add_student(new_name, new_age, new_mark)
 

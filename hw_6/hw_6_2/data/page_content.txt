@@ -147,7 +147,7 @@
 
 <hr />
 
-<div class="boxed"><a style="text-decoration:none" href="mailto:help&#x40;&#108;&#x69;&#x70;su&#x6d;&#46;&#99;om">help&#x40;lipsum&#46;&#99;om</a><br /><a style="text-decoration:none" rel="nofollow" href="/privacy" />Privacy Policy</a>
+<div class="boxed"><a style="text-decoration:none" href="mailto:help&#64;li&#x70;&#115;um&#x2e;com">hel&#112;&#x40;lipsum&#x2e;com</a><br /><a style="text-decoration:none" rel="nofollow" href="/privacy" />Privacy Policy</a>
 &middot;
 <!-- HTML for geo depending button -->
 <button id="pmLink">Privacy Manager</button>
@@ -186,5 +186,5 @@
 #pmLink { visibility: hidden; font-family: "Open Sans", Arial, sans-serif; font-size: 14px; color: #000; text-decoration: none; cursor: pointer; background: transparent; border: none; }
 #pmLink:hover { visibility: visible; color: #d00; } 
 </style>
-<!-- Generated in 0.007 seconds -->
+<!-- Generated in 0.008 seconds -->
 </body></html>

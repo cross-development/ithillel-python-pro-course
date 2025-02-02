@@ -22,10 +22,10 @@ class PageDownloader:
             response = requests.get(url, timeout=10)
             response.raise_for_status()
 
-            print(f'The {url} page has been successfully downloaded!')
+            print(f"The {url} page has been successfully downloaded!")
 
             return response.text
         except requests.exceptions.RequestException as e:
-            print(f'Error downloading {url}: {e}')
+            print(f"Error downloading {url}: {e}")
 
             return ""

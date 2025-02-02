@@ -1,34 +1,34 @@
 import json
-from typing import List
+from typing import List, Dict
 
-FILENAME = 'books.json'
+FILENAME = "books.json"
 
 
-def load_books() -> List[dict]:
+def load_books() -> List[Dict]:
     """
     Loads a list of books from a JSON file.
 
     Returns:
-        List[dict]: A list of dictionaries, where each dictionary represents a book with keys
+        List[Dict]: A list of dictionaries, where each dictionary represents a book with keys
                    'name', 'author', 'year', and 'available'.
     """
 
     try:
-        with open(FILENAME, 'r', encoding='utf-8') as file:
+        with open(FILENAME, "r", encoding="utf-8") as file:
             return json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
         return []
 
 
-def save_books(books: List[dict]) -> None:
+def save_books(books: List[Dict]) -> None:
     """
     Saves a list of books to a JSON file.
 
     Args:
-        books (List[dict]): A list of dictionaries, where each dictionary represents a book.
+        books (List[Dict]): A list of dictionaries, where each dictionary represents a book.
     """
 
-    with open(FILENAME, 'w', encoding='utf-8') as file:
+    with open(FILENAME, "w", encoding="utf-8") as file:
         json.dump(books, file, ensure_ascii=False, indent=2)
 
 
@@ -39,15 +39,15 @@ def list_available_books() -> None:
 
     books = load_books()
 
-    available_books = [book for book in books if book.get('available', False)]
+    available_books = [book for book in books if book.get("available", False)]
 
     if available_books:
-        print('Available books:')
+        print("Available books:")
 
         for book in available_books:
             print(f'  - "{book["name"]}" by {book["author"]} ({book["year"]})')
     else:
-        print('No available books.')
+        print("No available books.")
 
 
 def add_book(name: str, author: str, year: int, available: bool) -> None:
@@ -63,23 +63,23 @@ def add_book(name: str, author: str, year: int, available: bool) -> None:
 
     books = load_books()
     books.append({
-        'name': name,
-        'author': author,
-        'year': year,
-        'available': available,
+        "name": name,
+        "author": author,
+        "year": year,
+        "available": available,
     })
 
     save_books(books)
-    print(f'Book "{name}" has been added!')
+    print(f"Book '{name}' has been added!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     list_available_books()
 
-    new_name = input('Enter book name: ')
-    new_author = input('Author: ')
-    new_year = int(input('Year: '))
-    new_available = input('Is available? (yes/no): ').strip().lower() == 'yes'
+    new_name = input("Enter book name: ")
+    new_author = input("Author: ")
+    new_year = int(input("Year: "))
+    new_available = input("Is available? (yes/no): ").strip().lower() == "yes"
 
     add_book(new_name, new_author, new_year, new_available)
 

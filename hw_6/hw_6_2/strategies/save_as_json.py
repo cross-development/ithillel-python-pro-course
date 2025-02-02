@@ -17,9 +17,9 @@ class SaveAsJson(SaveStrategy):
             filename (str): The name of the file to save the content to.
         """
 
-        data = {'content': content}
+        data = {"content": content}
 
-        with open(filename, 'w', encoding='utf-8') as file:
+        with open(filename, "w", encoding="utf-8") as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 
-        print(f'JSON-file has been saved: {filename}')
+        print(f"JSON-file has been saved: {filename}")

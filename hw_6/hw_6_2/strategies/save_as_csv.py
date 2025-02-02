@@ -13,13 +13,13 @@ class SaveAsCsv(SaveStrategy):
         Saves content as a CSV file.
 
         Args:
-            content (str): The content to save (ignored for CSV).
+            content (str): The content to save.
             filename (str): The name of the file to save the content to.
         """
 
-        with open(filename, 'w', newline='', encoding='utf-8') as file:
+        with open(filename, "w", newline="", encoding="utf-8") as file:
             writer = csv.writer(file)
-            writer.writerow(['HTML Content'])
+            writer.writerow(["HTML Content"])
             writer.writerow([content])
 
-        print(f'CSV-file has been saved: {filename}')
+        print(f"CSV-file has been saved: {filename}")

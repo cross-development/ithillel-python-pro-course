@@ -1,7 +1,7 @@
 from math_utils import gcd, factorial
 from string_utils import to_upper, trim_whitespace
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     factorial_of_five = factorial(5)
     print(f"Factorial of five = {factorial_of_five}")
     assert factorial_of_five == 120, "Factorial of five should be equal to 120."
