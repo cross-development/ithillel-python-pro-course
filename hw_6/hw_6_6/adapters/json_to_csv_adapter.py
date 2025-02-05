@@ -1,3 +1,17 @@
+"""
+This module defines the JsonToCsvAdapter class, which adapts the JsonHandler and CsvHandler
+interfaces to enable seamless conversion of data between JSON and CSV formats.
+
+The JsonToCsvAdapter:
+
+- Uses the JsonHandler to read data from a JSON file.
+- Uses the CsvHandler to write the data to a CSV file.
+- Handles potential exceptions during the conversion process.
+
+This adapter facilitates the integration of different data handling components
+without requiring direct knowledge of their internal implementations.
+"""
+
 from hw_6.hw_6_6.handlers.csv_handler import CsvHandler
 from hw_6.hw_6_6.handlers.json_handler import JsonHandler
 

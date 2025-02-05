@@ -1,3 +1,17 @@
+"""
+This module defines a Vector class representing a mathematical vector in n-dimensional space.
+
+The Vector class provides methods for:
+
+- Creating Vector objects.
+- Performing vector operations: addition, subtraction, scalar multiplication.
+- Calculating the length (magnitude) of the vector.
+- Comparing vectors: equality and less-than comparison based on length.
+- String representation of the vector.
+
+The module includes unit tests to verify the correctness of the implemented operations.
+"""
+
 from math import sqrt
 
 
@@ -116,23 +130,23 @@ v2 = Vector([1, 2])
 
 v3 = v1 + v2
 print(v3)
-assert str(v3) == "Vector([4, 6])", "The result of adding two vectors should be a new Vector([4, 6])"
+assert str(v3) == "Vector([4, 6])", "The result of adding should be a new Vector([4, 6])"
 
 v4 = v1 - v2
 print(v4)
-assert str(v4) == "Vector([2, 2])", "The result of subtracting two vectors should be a new Vector([2, 2])"
+assert str(v4) == "Vector([2, 2])", "The result of subtracting should be a Vector([2, 2])"
 
 v5 = v1 * 2
 print(v5)
-assert str(v5) == "Vector([6, 8])", "The result of multiplying one vector by 2 should be a new Vector([6, 8])"
+assert str(v5) == "Vector([6, 8])", "The result of multiplying should be a new Vector([6, 8])"
 
 print(v1.length())
 assert v1.length() == 5.0, "The length of the vector Vector([3, 4]) should be 5.0"
 
 print(v1 < v2)
-assert (v1 < v2) == False, "Vector([3, 4]) should be greater than Vector([1, 2])"
+assert (v1 < v2) is False, "Vector([3, 4]) should be greater than Vector([1, 2])"
 
 print(v1 == Vector([3, 4]))
-assert (v1 == Vector([3, 4])) == True, "Vector([3, 4]) and Vector([3, 4]) should be equal"
+assert (v1 == Vector([3, 4])) is True, "Vector([3, 4]) and Vector([3, 4]) should be equal"
 
 print("All tests passed!")

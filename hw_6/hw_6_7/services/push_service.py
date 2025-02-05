@@ -1,3 +1,18 @@
+"""
+This module defines the PushService class, which simulates the functionality
+of a push notification service.
+
+The PushService provides a `send_push` method that:
+
+- Takes the device ID and the push notification message as input.
+- Performs basic validation of the device ID format.
+- Simulates sending the push notification by printing a confirmation message.
+
+This class can be used as a placeholder or for testing purposes
+before integrating with a real push notification service.
+"""
+
+
 class PushService:
     """
     Class representing a push notification service.

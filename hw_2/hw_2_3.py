@@ -1,3 +1,14 @@
+"""
+This module provides a function to analyze a Python module.
+
+The `analyze_module` function imports a specified module and
+prints information about its functions and classes,
+including their names and signatures.
+
+This module demonstrates a simple way to introspect
+and gather information about the contents of a Python module.
+"""
+
 import inspect
 import importlib
 
@@ -33,7 +44,7 @@ def analyze_module(module_name: str) -> None:
         classes = inspect.getmembers(module, inspect.isclass)
 
         if classes:
-            for class_name, class_obj in classes:
+            for class_name, _ in classes:
                 print(f"- {class_name}")
         else:
             print("- <No classes in this module>")

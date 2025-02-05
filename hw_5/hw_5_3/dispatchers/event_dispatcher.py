@@ -1,3 +1,12 @@
+"""
+This module defines the EventDispatcher class, which is responsible for
+managing the subscription and dispatching of game events.
+
+The EventDispatcher utilizes the Observer pattern to allow different parts
+of the game to react to specific events. This promotes loose coupling
+between game components and improves code maintainability.
+"""
+
 from typing import List, Callable, Dict
 
 from hw_5.hw_5_3.enums.event_type import EventType
@@ -9,8 +18,8 @@ class EventDispatcher:
     Dispatches game events to registered handlers.
 
     Attributes:
-        _subscribers (Dict[EventType, List[Callable[[GameEventException], None]]]):
-            A dictionary mapping event types to lists of event handlers.
+        _subscribers (Dict[EventType, List[Callable[[GameEventException], None]]]): \
+                        A dictionary mapping event types to lists of event handlers.
     """
 
     def __init__(self) -> None:
@@ -25,7 +34,8 @@ class EventDispatcher:
 
         Args:
             event_type (EventType): The event type to subscribe to.
-            handler (Callable[[GameEventException], None]): The event handler to subscribe.
+            handler (Callable[[GameEventException], None]): The event handler \
+                                                            to subscribe.
         """
         if event_type not in self._subscribers:
             self._subscribers[event_type] = []

@@ -1,3 +1,23 @@
+"""
+This module demonstrates the usage of the MessageDispatcher, MessageSender adapters,
+and underlying communication services.
+
+It includes two test functions:
+
+- `test_success_case`:
+    - Creates and configures adapters with valid credentials.
+    - Sends a test message through the MessageDispatcher.
+    - Verifies successful message delivery by printing simulated messages.
+
+- `test_failure_case`:
+    - Creates and configures adapters with invalid credentials.
+    - Sends a test message through the MessageDispatcher.
+    - Verifies that errors are raised for adapters with invalid credentials.
+
+This script provides a comprehensive test of the message dispatching system,
+including both successful and failure scenarios.
+"""
+
 from hw_6.hw_6_7.adapters.sms_adapter import SmsAdapter
 from hw_6.hw_6_7.adapters.push_adapter import PushAdapter
 from hw_6.hw_6_7.adapters.email_adapter import EmailAdapter

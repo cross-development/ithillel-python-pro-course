@@ -1,3 +1,21 @@
+"""
+This module provides functions for managing a library of books stored in a JSON file.
+
+**Key functionalities:**
+
+- **load_books():** Loads a list of books from the 'books.json' file.
+- **save_books(books):** Saves a list of books to the 'books.json' file.
+- **list_available_books():** Prints a list of currently available books.
+- **add_book(name, author, year, available):** Adds a new book to the library.
+
+The script demonstrates the usage of these functions by:
+
+1. Listing the initially available books.
+2. Prompting the user to enter details for a new book.
+3. Adding the new book to the library.
+4. Listing the available books after the addition.
+"""
+
 import json
 from typing import List, Dict
 

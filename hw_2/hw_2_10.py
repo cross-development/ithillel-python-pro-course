@@ -1,3 +1,14 @@
+"""
+This module demonstrates the Singleton design pattern in Python.
+
+The `SingletonMeta` metaclass ensures that only one instance of a class can be created.
+The `Singleton` class uses this metaclass to implement the Singleton pattern.
+
+This module provides a practical example of how to implement the Singleton pattern
+in Python using a metaclass.
+"""
+
+
 class SingletonMeta(type):
     """
     A metaclass that implements the Singleton pattern, ensuring that only one instance
@@ -30,7 +41,8 @@ class Singleton(metaclass=SingletonMeta):
 
     def __init__(self) -> None:
         """
-        Initializes the Singleton instance. This method is called only once during the creation of the first instance.
+        Initializes the Singleton instance. \
+        This method is called only once during the creation of the first instance.
         """
         print("Creating instance")
 

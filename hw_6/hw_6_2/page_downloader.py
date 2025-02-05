@@ -1,3 +1,13 @@
+"""
+This module provides the PageDownloader class, a utility for downloading web pages.
+
+The PageDownloader offers a static `download` method that:
+
+- Fetches the content of a given URL using the `requests` library.
+- Handles potential exceptions (e.g., network errors, timeout) gracefully.
+- Returns the downloaded content as a string.
+"""
+
 import requests
 
 

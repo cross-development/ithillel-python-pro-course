@@ -1,3 +1,17 @@
+"""
+This module provides functions for working with student data stored in a CSV file:
+
+- `calculate_average_mark()`: Calculates and prints the average mark of all students.
+- `add_student(name, age, mark)`: Adds a new student record to the file.
+
+The script demonstrates the usage of these functions by:
+
+1. Calculating and displaying the initial average mark.
+2. Prompting the user to enter details for a new student.
+3. Adding the new student record to the file.
+4. Recalculating and displaying the updated average mark.
+"""
+
 import csv
 from typing import List
 

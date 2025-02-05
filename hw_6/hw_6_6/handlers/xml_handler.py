@@ -1,3 +1,18 @@
+"""
+This module defines the XmlHandler class, providing methods for reading and
+writing data to XML files.
+
+Key functionalities:
+
+- `read_xml(file_path)`: Reads data from an XML file and returns it as a list of dictionaries,
+    where each dictionary represents an XML element and its attributes.
+- `write_xml(file_path, data)`: Writes a list of dictionaries to an XML file,
+    creating an XML structure with elements and attributes based on the provided data.
+
+The class includes robust error handling for potential issues during file operations
+and XML data processing.
+"""
+
 import xml.etree.ElementTree as ET
 from typing import List, Dict
 

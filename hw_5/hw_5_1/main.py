@@ -1,3 +1,11 @@
+"""
+This module provides a simple command-line interface for the Calculator class.
+
+It allows the user to interactively enter arithmetic expressions,
+and the Calculator class handles the calculation and displays the result.
+The interface includes basic error handling and an 'exit' command.
+"""
+
 from hw_5.hw_5_1.calculator import Calculator
 
 if __name__ == '__main__':
@@ -6,7 +14,8 @@ if __name__ == '__main__':
     while True:
         try:
             expression = input(
-                "Enter calculation (e.g., 12.5 + 3.2; allowed operators: +, -, /, *) or 'exit' to quit: ").strip()
+                "Enter calculation (e.g., 12.5 + 3.2; \
+                allowed operators: +, -, /, *) or 'exit' to quit: ").strip()
 
             if expression.lower() == 'exit':
                 break

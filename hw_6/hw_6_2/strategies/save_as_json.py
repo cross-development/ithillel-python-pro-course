@@ -1,3 +1,10 @@
+"""
+This module defines the SaveAsJson class, a concrete implementation of the SaveStrategy interface.
+
+The SaveAsJson class provides functionality for saving content to a JSON file.
+It stores the content within a 'content' key within the JSON object.
+"""
+
 import json
 
 from hw_6.hw_6_2.strategies.save_strategy import SaveStrategy

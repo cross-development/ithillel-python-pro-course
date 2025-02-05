@@ -1,3 +1,18 @@
+"""
+This module defines the EmailService class, which simulates the functionality
+of an email sending service.
+
+The EmailService provides a `send_email` method that:
+
+- Takes the recipient's email address and the message content as input.
+- Performs basic validation of the email address.
+- Simulates sending the email by printing a confirmation message.
+
+This class can be used as a placeholder or for testing purposes
+before integrating with a real email sending library.
+"""
+
+
 class EmailService:
     """
     Class representing an email service.

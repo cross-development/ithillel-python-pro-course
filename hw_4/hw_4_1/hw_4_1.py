@@ -1,3 +1,14 @@
+"""
+This module defines a ReverseFileIterator class for reading a file line-by-line in reverse order.
+
+The ReverseFileIterator provides:
+
+- An efficient way to iterate through the lines of a file from the last line to the first.
+- Handles file opening and closing within the iterator.
+
+This module demonstrates a practical use case for custom iterators in Python.
+"""
+
 from typing import Iterator
 
 
@@ -51,15 +62,15 @@ class ReverseFileIterator:
         return line
 
 
-file_path = "test.txt"
+FILE_PATH = "test.txt"
 
-with open(file_path, 'w', encoding='utf-8') as f:
+with open(FILE_PATH, 'w', encoding='utf-8') as f:
     for item in range(1, 11):
         f.write(f"Line {item}\n")
 
 print("Reading file in reverse:")
 
-for row in ReverseFileIterator(file_path):
+for row in ReverseFileIterator(FILE_PATH):
     print(row)
 
 print("All tests passed!")

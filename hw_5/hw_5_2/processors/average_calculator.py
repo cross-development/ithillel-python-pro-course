@@ -1,3 +1,13 @@
+"""
+This module defines the AverageCalculator class, which inherits from the FileProcessor
+class and provides functionality for calculating the average of numerical values
+contained within a file.
+
+The AverageCalculator class implements methods for extracting numbers from
+file lines and calculating their average. It includes error handling for
+invalid data and division by zero.
+"""
+
 from typing import List
 
 from hw_5.hw_5_2.processors.file_processor import FileProcessor
@@ -13,7 +23,8 @@ class AverageCalculator(FileProcessor):
         Extracts floating-point numbers from the lines of the file.
 
         Args:
-            lines (List[str]): A list of strings, where each string is a line from the file.
+            lines (List[str]): A list of strings, where each string is \
+                               a line from the file.
 
         Raises:
             ValueError: If a line cannot be converted to a float.
@@ -30,7 +41,8 @@ class AverageCalculator(FileProcessor):
                 try:
                     numbers.append(float(line))
                 except ValueError:
-                    raise ValueError(f"Invalid data in file: '{line}' is not a number.")
+                    raise ValueError(f"Invalid data in file: \
+                                    '{line}' is not a number.")
 
         return numbers
 

@@ -1,3 +1,13 @@
+"""
+This module provides a ConfigManager class for working with JSON configuration files.
+
+The ConfigManager acts as a context manager, automatically loading the configuration
+from the specified file on entry and saving any changes back to the file on exit.
+
+This simplifies the process of working with configuration files and ensures
+that changes are persisted across program executions.
+"""
+
 import json
 from typing import Any, Dict
 
@@ -35,10 +45,12 @@ class ConfigManager:
 
             print(f"Configuration loaded from '{self.file_path}'.")
         except FileNotFoundError:
-            print(f"Configuration file '{self.file_path}' not found. Starting with an empty configuration.")
+            print(f"Configuration file '{self.file_path}' not found. \
+                Starting with an empty configuration.")
             self.config = {}
         except json.JSONDecodeError:
-            print(f"Error decoding JSON in '{self.file_path}'. Starting with an empty configuration.")
+            print(f"Error decoding JSON in '{self.file_path}'. \
+                Starting with an empty configuration.")
             self.config = {}
 
         return self.config
@@ -61,9 +73,9 @@ class ConfigManager:
             print(f"Failed to write configuration to '{self.file_path}': {e}")
 
 
-config_file = "config.json"
+CONFIG_FILE = "config.json"
 
-with ConfigManager(config_file) as config:
+with ConfigManager(CONFIG_FILE) as config:
     config["app_name"] = "My Application"
     config["version"] = "1.0.0"
     config["author"] = "Vitalii Derda"

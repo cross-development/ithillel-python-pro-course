@@ -1,3 +1,12 @@
+"""
+This module defines an abstract base class, OperationalStrategy,
+for defining strategies for various arithmetic operations.
+
+The OperationalStrategy class provides a common interface for all
+concrete operation strategies, ensuring consistent method signatures
+and allowing for easy swapping of different operation strategies.
+"""
+
 from decimal import Decimal
 from abc import ABC, abstractmethod
 

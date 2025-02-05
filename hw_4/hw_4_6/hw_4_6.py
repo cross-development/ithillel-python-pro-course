@@ -1,3 +1,11 @@
+"""
+This module provides a DirectoryFileIterator class for iterating over \
+files within a given directory.
+
+The iterator yields tuples containing the filename and its size in bytes.
+It includes input validation to ensure the provided path is a valid directory.
+"""
+
 import os
 from typing import Iterator, Tuple
 
@@ -55,10 +63,10 @@ class DirectoryFileIterator:
                 return file_name, file_size
 
 
-directory = "file_dir"
+DIRECTORY = "file_dir"
 
 try:
-    file_iterator = DirectoryFileIterator(directory)
+    file_iterator = DirectoryFileIterator(DIRECTORY)
 
     for name, size in file_iterator:
         print(f"File: {name}, Size: {size} bytes")

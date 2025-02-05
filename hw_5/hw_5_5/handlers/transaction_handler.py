@@ -1,3 +1,16 @@
+"""
+This module defines an abstract base class, TransactionHandler,
+for implementing transaction processing logic in a chain-of-responsibility pattern.
+
+The TransactionHandler class provides a common interface for:
+
+- Setting the next handler in the chain.
+- Handling transactions and optionally passing them to the next handler.
+
+This abstract class ensures consistent behavior and facilitates
+the creation of flexible transaction processing pipelines.
+"""
+
 from typing import Optional
 from decimal import Decimal
 from abc import ABC, abstractmethod

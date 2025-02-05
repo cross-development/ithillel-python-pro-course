@@ -1,3 +1,10 @@
+"""
+This module defines an Enum, Currency, representing different currencies.
+
+The Currency enum provides a set of named constants for common currencies
+such as USD, EUR, and UAH, improving code readability and maintainability.
+"""
+
 from enum import Enum
 
 

@@ -1,3 +1,15 @@
+"""
+This module defines a MutableClass that allows dynamic modification of its attributes.
+
+The MutableClass provides methods to:
+
+- Add new attributes to the object dynamically.
+- Remove existing attributes from the object dynamically.
+
+This demonstrates a mechanism for changing the object's structure at runtime.
+"""
+
+
 class MutableClass:
     """
     A class that allows dynamic addition and removal of attributes during execution.

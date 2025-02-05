@@ -1,3 +1,17 @@
+"""
+This module defines the XmlToJsonAdapter class, which adapts the XmlHandler and JsonHandler
+interfaces to enable seamless conversion of data between XML and JSON formats.
+
+The XmlToJsonAdapter:
+
+- Uses the XmlHandler to read data from an XML file.
+- Uses the JsonHandler to write the data to a JSON file.
+- Handles potential exceptions during the conversion process.
+
+This adapter facilitates the integration of different data handling components
+without requiring direct knowledge of their internal implementations.
+"""
+
 from hw_6.hw_6_6.handlers.xml_handler import XmlHandler
 from hw_6.hw_6_6.handlers.json_handler import JsonHandler
 

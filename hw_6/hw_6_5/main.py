@@ -1,3 +1,19 @@
+"""
+This module provides functions for managing product data stored in an XML file:
+
+- `load_products()`: Loads product data from the 'products.xml' file.
+- `list_products()`: Lists all products with their quantities from the file.
+- `update_product_quantity(product_name, new_quantity)`: Updates the quantity of \
+                                                         a specific product in the file.
+
+The script demonstrates the usage of these functions by:
+
+1. Listing the initial products.
+2. Prompting the user to enter the product name and new quantity.
+3. Updating the product quantity in the file.
+4. Listing the products again to show the updated information.
+"""
+
 import xml.etree.ElementTree as ET
 from typing import Optional
 
@@ -9,7 +25,8 @@ def load_products() -> Optional[ET.Element]:
     Loads product data from an XML file.
 
     Returns:
-        Optional[ET.Element]: The root element of the XML tree if loaded successfully, None otherwise.
+        Optional[ET.Element]: The root element of the XML tree if loaded successfully, \
+                              None otherwise.
     """
 
     try:
@@ -76,9 +93,9 @@ def update_product_quantity(product_name: str, new_quantity: int) -> None:
 if __name__ == "__main__":
     list_products()
 
-    product_name = input("Enter the name of the product to update: ")
-    new_quantity = int(input("New quantity: "))
+    PRODUCT_NAME = input("Enter the name of the product to update: ")
+    NEW_QUANTITY = int(input("New quantity: "))
 
-    update_product_quantity(product_name, new_quantity)
+    update_product_quantity(PRODUCT_NAME, NEW_QUANTITY)
 
     list_products()

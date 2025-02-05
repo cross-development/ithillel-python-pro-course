@@ -1,7 +1,13 @@
+"""
+This module provides an ImageMetadataIterator class for iterating over images in a directory
+and extracting metadata such as filename, format, dimensions, and size.
+The iterator also saves the extracted metadata to a CSV file.
+"""
+
 import os
 import csv
-from PIL import Image
 from typing import Iterator, Dict, Any
+from PIL import Image
 
 
 class ImageMetadataIterator:
@@ -29,7 +35,8 @@ class ImageMetadataIterator:
         self.directory = directory
         self.output_csv = output_csv
         self._index = 0
-        self._files = [f for f in os.listdir(directory) if f.lower().endswith(self.__image_file_extensions)]
+        self._files = [f for f in os.listdir(directory)
+                       if f.lower().endswith(self.__image_file_extensions)]
 
         with open(self.output_csv, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
@@ -52,7 +59,8 @@ class ImageMetadataIterator:
             StopIteration: If the end of the image list is reached.
 
         Returns:
-            Dict[str, Any]: A dictionary containing image metadata (Filename, Format, Width, Height, Mode, Size (bytes)).
+            Dict[str, Any]: A dictionary containing image metadata \
+                            (Filename, Format, Width, Height, Mode, Size (bytes)).
         """
         if self._index >= len(self._files):
             raise StopIteration
@@ -85,15 +93,15 @@ class ImageMetadataIterator:
             return self.__next__()
 
 
-image_directory = "images"
-output_csv_file = "image_metadata.csv"
+IMAGE_DIRECTORY = 'images'
+OUTPUT_CSV_FILE = 'image_metadata.csv'
 
-image_iterator = ImageMetadataIterator(image_directory, output_csv_file)
+image_iterator = ImageMetadataIterator(IMAGE_DIRECTORY, OUTPUT_CSV_FILE)
 
 print("Processing Images:")
 for md in image_iterator:
     print(md)
 
-print(f"Metadata saved to {output_csv_file}")
+print(f"Metadata saved to {OUTPUT_CSV_FILE}")
 
 print("All tests passed!")

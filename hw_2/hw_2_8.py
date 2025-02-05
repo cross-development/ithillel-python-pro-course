@@ -1,3 +1,13 @@
+"""
+This module demonstrates how to analyze the inheritance hierarchy of a class.
+
+The `analyze_inheritance` function inspects a class and prints the
+methods inherited from its base classes.
+
+The `Parent` and `Child` classes are used as an example to demonstrate
+the inheritance analysis.
+"""
+
 import inspect
 
 
@@ -12,7 +22,7 @@ def analyze_inheritance(cls: type) -> None:
 
     # Get all methods from the base classes
     for base in cls.__mro__[1:]:  # Skip the class itself, start from base classes
-        for name, method in inspect.getmembers(base, inspect.isfunction):
+        for name, _ in inspect.getmembers(base, inspect.isfunction):
             print(f"- {name} from {base.__name__}")
 
 
@@ -25,7 +35,6 @@ class Parent:
         """
         A method that does nothing but can be inherited by subclasses.
         """
-        pass
 
 
 class Child(Parent):
@@ -37,7 +46,6 @@ class Child(Parent):
         """
         A method specific to the Child class.
         """
-        pass
 
 
 analyze_inheritance(Child)

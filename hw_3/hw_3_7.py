@@ -1,3 +1,17 @@
+"""
+This module defines a Vector class representing a vector in n-dimensional space.
+
+The Vector class provides methods for:
+
+- Creating Vector objects.
+- Performing vector operations: addition, subtraction, dot product.
+- Calculating the magnitude of the vector.
+- Comparing vectors: equality, less than, and greater than comparisons based on magnitude.
+- String representation of the vector.
+
+The module includes unit tests to verify the correctness of the implemented operations.
+"""
+
 import math
 
 
@@ -6,7 +20,8 @@ class Vector:
     Represents a vector in n-dimensional space.
 
     Attributes:
-        coordinates (list): A list of floating-point numbers representing the  coordinates of the vector.
+        coordinates (list): A list of floating-point numbers representing the \
+                            coordinates of the vector.
     """
 
     def __init__(self, coordinates: list[float]):
@@ -14,7 +29,8 @@ class Vector:
         Initializes a Vector object.
 
         Args:
-            coordinates (list): A list of floating-point numbers representing the coordinates of the vector.
+            coordinates (list): A list of floating-point numbers representing \
+                                the coordinates of the vector.
         """
         self.coordinates = coordinates
 
@@ -92,7 +108,8 @@ class Vector:
             other (Vector): The other vector to compare.
 
         Returns:
-            bool: True if the magnitude of this vector is less than the magnitude of the other vector, False otherwise.
+            bool: True if the magnitude of this vector is less than the magnitude \
+                  of the other vector, False otherwise.
         """
         return self.magnitude() < other.magnitude()
 
@@ -104,7 +121,8 @@ class Vector:
             other (Vector): The other vector to compare.
 
         Returns:
-            bool: True if the magnitude of this vector is greater than the magnitude of the other vector, False otherwise.
+            bool: True if the magnitude of this vector is greater than the magnitude \
+                  of the other vector, False otherwise.
         """
         return self.magnitude() > other.magnitude()
 
@@ -138,18 +156,18 @@ assert str(v2) == "Vector([4, 5, 6])", "v1 should be Vector([4, 5, 6])"
 
 print("\nOperations:")
 print(f"Sum: v1 + v2 = {v1 + v2}")
-assert str(v1 + v2) == "Vector([5, 7, 9])", "Sum of v1 and v2 should be Vector([5, 7, 9])"
+assert str(v1 + v2) == "Vector([5, 7, 9])", "Sum of v1+v2 should be Vector([5, 7, 9])"
 print(f"Difference: v1 - v2 = {v1 - v2}")
-assert str(v1 - v2) == "Vector([-3, -3, -3])", "Difference between v1 and v2 should be Vector([-3, -3, -3])"
+assert str(v1 - v2) == "Vector([-3, -3, -3])", "Diff between v1-v2 should be Vector([-3, -3, -3])"
 print(f"Dot product: v1 * v2 = {v1 * v2}")
 assert v1 * v2 == 32, "Dot product of v1 and v2 should be 32"
 
 print("\nComparisons:")
 print(f"v1 == v2: {v1 == v2}")
-assert (v1 == v2) == False, "v1 should not be equal to v2"
+assert (v1 == v2) is False, "v1 should not be equal to v2"
 print(f"v1 < v2: {v1 < v2}")
-assert (v1 < v2) == True, "v1 should not be greater than v2"
+assert (v1 < v2) is True, "v1 should not be greater than v2"
 print(f"v1 > v2: {v1 > v2}")
-assert (v1 > v2) == False, "v2 should be greater than v1"
+assert (v1 > v2) is False, "v2 should be greater than v1"
 
 print("All tests passed!")

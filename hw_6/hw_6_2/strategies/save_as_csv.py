@@ -1,3 +1,11 @@
+"""
+This module defines the SaveAsCsv class, a concrete implementation
+of the SaveStrategy interface.
+
+The SaveAsCsv class provides functionality for saving content to a CSV file.
+It writes the given content as a single row in the CSV file.
+"""
+
 import csv
 
 from hw_6.hw_6_2.strategies.save_strategy import SaveStrategy

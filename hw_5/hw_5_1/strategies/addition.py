@@ -1,3 +1,8 @@
+"""
+This module defines the Addition class, which implements the OperationalStrategy
+interface for performing addition operations on Decimal numbers.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_1.strategies.operational_strategy import OperationalStrategy

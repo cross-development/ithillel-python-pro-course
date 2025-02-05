@@ -1,3 +1,12 @@
+"""
+This module defines a custom exception, InsufficientResourcesException,
+specifically for handling cases where a player lacks the necessary resources
+to perform a certain action in a game.
+
+The exception provides information about the missing resource,
+the required amount, and the current amount available.
+"""
+
 from hw_5.hw_5_4.enums.game_resource import GameResource
 
 
@@ -16,7 +25,8 @@ class InsufficientResourcesException(Exception):
             current_amount (int): The current amount of the resource the player has.
         """
         super().__init__(
-            f"Not enough {required_resource.value}: Required {required_amount}, but only {current_amount} available.")
+            f"Not enough {required_resource.value}: Required {required_amount}, \
+            but only {current_amount} available.")
 
         self.required_resource = required_resource
         self.required_amount = required_amount

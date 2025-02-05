@@ -1,3 +1,11 @@
+"""
+This module demonstrates the usage of the EventDispatcher class
+by simulating game events and dispatching them to registered handlers.
+
+This script showcases how the EventDispatcher can be used to
+effectively manage and handle game events within an application.
+"""
+
 from hw_5.hw_5_3.dispatchers.event_dispatcher import EventDispatcher
 from hw_5.hw_5_3.enums.event_type import EventType
 from hw_5.hw_5_3.exceptions.game_event_exception import GameEventException

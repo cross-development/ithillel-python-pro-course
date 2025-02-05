@@ -1,3 +1,12 @@
+"""
+This module defines a custom exception class, GameEventException,
+for representing game events.
+
+GameEventException provides a structured way to encapsulate
+information about game events, including the event type and
+additional details.
+"""
+
 from typing import Dict, Any
 
 from hw_5.hw_5_3.enums.event_type import EventType

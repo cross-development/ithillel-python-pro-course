@@ -1,3 +1,11 @@
+"""
+This module defines the Division class, which implements the OperationalStrategy
+interface for performing division operations on Decimal numbers.
+
+The Division class includes a check for division by zero and raises a
+ZeroDivisionError if the divisor is zero.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_1.strategies.operational_strategy import OperationalStrategy

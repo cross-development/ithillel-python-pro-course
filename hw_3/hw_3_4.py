@@ -1,3 +1,16 @@
+"""
+This module defines a BinaryNumber class for representing and manipulating binary numbers.
+
+The BinaryNumber class provides methods for:
+
+- Creating BinaryNumber objects.
+- Performing bitwise operations: AND, OR, XOR, NOT.
+- Representing the BinaryNumber object as a string in binary format.
+
+The module includes unit tests to verify the correctness of the implemented bitwise operations.
+"""
+
+
 class BinaryNumber:
     """
     Represents a binary number.

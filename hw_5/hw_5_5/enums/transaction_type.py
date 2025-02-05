@@ -1,3 +1,11 @@
+"""
+This module defines an Enum, TransactionType, representing different
+types of financial transactions.
+
+The TransactionType enum provides a set of named constants for common transaction types
+such as WITHDRAW, PURCHASE, and DEPOSIT, improving code readability and maintainability.
+"""
+
 from enum import Enum
 
 

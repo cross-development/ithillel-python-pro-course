@@ -1,3 +1,17 @@
+"""
+This module defines a Rectangle class that represents a rectangle shape.
+
+The Rectangle class provides methods to:
+
+- Calculate the area of the rectangle.
+- Calculate the perimeter of the rectangle.
+- Check if the rectangle is a square.
+- Resize the rectangle to new dimensions.
+
+The module also includes example usage and unit tests to demonstrate the class functionality.
+"""
+
+
 class Rectangle:
     """
     A class representing a rectangle shape.

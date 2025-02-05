@@ -1,3 +1,14 @@
+"""
+This module defines the ResourceCheckHandler class, which extends the BaseHandler
+and is responsible for checking if the player has enough resources to fulfill
+a given request.
+
+If the player has sufficient resources, the handler deducts the required resources
+from the player's inventory and proceeds to the next handler in the chain.
+If the player lacks resources, an InsufficientResourcesException is raised
+and the request is not passed to the next handler.
+"""
+
 from hw_5.hw_5_4.models.player import Player
 from hw_5.hw_5_4.models.request import Request
 from hw_5.hw_5_4.handlers.base_handler import BaseHandler

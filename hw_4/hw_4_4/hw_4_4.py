@@ -1,3 +1,14 @@
+"""
+This module provides a function to filter lines from a large log file.
+
+The `filter_log_file` function reads the input file line by line,
+filters out lines containing a specified keyword, and writes
+the filtered lines to a new output file.
+
+The function utilizes a generator (`line_generator`) to efficiently
+process the input file line by line.
+"""
+
 from typing import Generator
 
 

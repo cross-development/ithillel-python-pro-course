@@ -1,3 +1,10 @@
+"""
+This module defines an Enum, EventType, representing different types of events.
+
+The EventType enum provides a set of named constants for common game events
+such as DEATH and LEVEL_UP, improving code readability and maintainability.
+"""
+
 from enum import Enum
 
 

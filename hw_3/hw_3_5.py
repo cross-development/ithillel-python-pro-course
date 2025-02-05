@@ -1,3 +1,16 @@
+"""
+This module provides custom implementations of common iterable operations:
+
+- `custom_len()`: Calculates the length of an iterable object.
+- `custom_sum()`: Calculates the sum of all elements in an iterable object.
+- `custom_min()`: Finds the minimum value in an iterable object.
+
+These functions demonstrate how to implement these operations without relying
+on built-in functions like `len()`, `sum()`, and `min()`.
+
+The module includes unit tests to verify the correctness of these custom functions.
+"""
+
 from typing import Iterable
 
 
@@ -62,8 +75,7 @@ def custom_min(sequence: Iterable) -> int:
         raise ValueError("Sequence is empty")
 
     for item in iterator:
-        if item < minimum:
-            minimum = item
+        minimum = min(minimum, item)
 
     return minimum
 

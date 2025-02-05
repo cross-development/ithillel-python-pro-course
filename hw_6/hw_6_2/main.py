@@ -1,3 +1,17 @@
+"""
+This module demonstrates the usage of the PageDownloader and PageSaver classes.
+
+It:
+
+1. Prompts the user to enter a URL.
+2. Downloads the web page content using the PageDownloader.
+3. Creates PageSaver instances with different save strategies (TXT, JSON, CSV, XML).
+4. Saves the downloaded content to files using the respective save strategies.
+
+This script showcases how to effectively use the provided classes
+to download web pages and save them in various formats.
+"""
+
 from hw_6.hw_6_2.page_saver import PageSaver
 from hw_6.hw_6_2.page_downloader import PageDownloader
 from hw_6.hw_6_2.strategies.save_as_csv import SaveAsCsv

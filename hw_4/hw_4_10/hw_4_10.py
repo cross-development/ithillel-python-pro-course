@@ -1,3 +1,13 @@
+"""
+This module provides an ArchiveManager context manager for creating ZIP archives of directories.
+
+The ArchiveManager simplifies the process of creating ZIP archives by:
+
+- Handling the creation and closing of the ZIP file within a with block.
+- Providing a method to easily add files from a specified directory to the archive.
+- Including basic error handling for invalid directory paths.
+"""
+
 import os
 import zipfile
 from typing import Any
@@ -64,14 +74,14 @@ class ArchiveManager:
             self.archive.close()
 
 
-archive_name = 'archive.zip'
-directory_to_archive = 'files_to_archive'
+ARCHIVE_NAME = 'archive.zip'
+DIRECTORY_TO_ARCHIVE = 'files_to_archive'
 
 try:
-    with ArchiveManager(archive_name, directory_to_archive) as archive:
+    with ArchiveManager(ARCHIVE_NAME, DIRECTORY_TO_ARCHIVE) as archive:
         archive.add_files_from_directory()
 
-    print(f"All files from {directory_to_archive} successfully archived into {archive_name}")
+    print(f"All files from {DIRECTORY_TO_ARCHIVE} successfully archived into {ARCHIVE_NAME}")
 except Exception as e:
     print(f"Error during archiving: {e}")
 

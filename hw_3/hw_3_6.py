@@ -1,3 +1,17 @@
+"""
+This module defines a User class representing a user with first name, last name, and email address.
+
+The User class:
+
+- Encapsulates user data using private attributes (_first_name, _last_name, _email).
+- Provides public properties (first_name, last_name, email) for controlled access and modification.
+- Implements input validation to ensure data integrity.
+- Includes a regular expression for basic email validation.
+
+The module demonstrates the use of properties, input validation, \
+and encapsulation in object-oriented programming.
+"""
+
 import re
 
 

@@ -1,3 +1,12 @@
+"""
+This module provides a function to display user-friendly messages
+for specific game events.
+
+The `show_user_message` function takes a GameEventException object
+as input and displays an appropriate message based on the event type
+and any provided details.
+"""
+
 from hw_5.hw_5_3.enums.event_type import EventType
 from hw_5.hw_5_3.exceptions.game_event_exception import GameEventException
 

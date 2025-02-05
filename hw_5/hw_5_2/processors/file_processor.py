@@ -1,3 +1,18 @@
+"""
+This module defines an abstract base class, FileProcessor,
+for processing data from files.
+
+The FileProcessor class provides a common framework for file-based processing tasks,
+including:
+
+- Reading the contents of a file.
+- Extracting relevant data from the file contents.
+- Performing calculations or other processing operations on the extracted data.
+
+This abstract class ensures consistent structure and behavior for
+different file processing classes that inherit from it.
+"""
+
 from typing import List, Union
 from abc import ABC, abstractmethod
 
@@ -21,7 +36,8 @@ class FileProcessor(ABC):
         Processes the file and returns the result.
 
         Returns:
-            Union[float, None]: The result of the processing, or None if an error occurs.
+            Union[float, None]: The result of the processing, \
+                                or None if an error occurs.
         """
         try:
             lines = self._read_file()
@@ -33,7 +49,8 @@ class FileProcessor(ABC):
         except ValueError as e:
             print(f"Error: {e}")
         except ZeroDivisionError:
-            print("Error: The file contains no valid numbers to calculate an average.")
+            print("Error: The file contains no valid numbers \
+                to calculate an average.")
 
         return None
 
@@ -53,12 +70,12 @@ class FileProcessor(ABC):
         Extracts numbers from the lines read from the file.
 
         Args:
-            lines (List[str]): A list of strings, where each string is a line from the file.
+            lines (List[str]): A list of strings, where each string is \
+                               a line from the file.
 
         Returns:
             List[float]: A list of floating-point numbers extracted from the lines.
         """
-        pass
 
     @abstractmethod
     def _calculate(self, numbers: List[float]) -> float:
@@ -71,4 +88,3 @@ class FileProcessor(ABC):
         Returns:
             float: The calculated value.
         """
-        pass

@@ -1,3 +1,15 @@
+"""
+This module defines the CsvHandler class, providing methods for reading and
+writing data to CSV files.
+
+Key functionalities:
+
+- `read_csv(file_path)`: Reads data from a CSV file and returns it as a list of dictionaries.
+- `write_csv(file_path, data)`: Writes a list of dictionaries to a CSV file.
+
+The class includes robust error handling for potential issues during file operations.
+"""
+
 import csv
 from typing import List, Dict
 
@@ -15,7 +27,8 @@ class CsvHandler:
             file_path (str): The path to the CSV file.
 
         Returns:
-            List[Dict]: A list of dictionaries, where each dictionary represents a row in the CSV file.
+            List[Dict]: A list of dictionaries, where each dictionary represents \
+                        a row in the CSV file.
 
         Raises:
             FileNotFoundError: If the file does not exist.
@@ -38,7 +51,8 @@ class CsvHandler:
 
         Args:
             file_path (str): The path to the CSV file.
-            data (List[Dict]): A list of dictionaries, where each dictionary represents a row to be written.
+            data (List[Dict]): A list of dictionaries, where each dictionary represents \
+                               a row to be written.
 
         Raises:
             Exception: For any errors during writing.

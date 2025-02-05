@@ -1,3 +1,16 @@
+"""
+This module defines the PurchaseHandler class, which extends the TransactionHandler
+and is responsible for handling purchase transactions.
+
+The PurchaseHandler processes purchase transactions by:
+
+- Withdrawing the purchase amount from the account balance.
+- Printing a confirmation message for the successful purchase.
+
+The handler then optionally passes the transaction to the next handler
+in the chain for further processing (e.g., logging).
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_5.models.account import Account

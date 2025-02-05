@@ -1,7 +1,20 @@
 """
-For this task, the @property approach is the most convenient. It provides a clean and intuitive way to work with
-attributes while requiring minimal additional code. Descriptors are better suited for more complex scenarios where
-reusable or specialized behavior is needed across multiple classes.
+This module demonstrates three different approaches to implementing
+a Product class with a price attribute:
+
+1. **ProductWithGetSet:** Uses traditional getter (get_price) and setter (set_price) methods.
+    * Advantages: Simple and easy to understand, suitable for small projects.
+    * Disadvantages: Verbose code; requires explicit calls to get_price and set_price.
+
+2. **ProductWithProperty:** Uses the Python `@property` decorator for cleaner access.
+    * Advantages: Cleaner code, more intuitive syntax for accessing attributes (auto validation).
+    * Disadvantages: Limited to simpler use cases; not ideal for reusable logic across many classes.
+
+3. **ProductWithDescriptor:** Uses a custom descriptor class for more flexible price management.
+    * Advantages: Flexible and powerful. Reusable logic that can be shared across multiple classes.
+    * Disadvantages: More complex to understand and implement, especially for beginners.
+
+The module includes unit tests to verify the functionality of each approach.
 """
 
 
@@ -10,7 +23,7 @@ class ProductWithGetSet:
     Represents a product with a name and price using traditional getter and setter methods.
 
     * Advantages: Simple and easy to understand, suitable for small projects.
-    * Disadvantages: Verbose code; requires explicit calls to get_price and set_price, making the syntax less convenient.
+    * Disadvantages: Verbose code; requires explicit calls to get_price and set_price.
 
     Attributes:
         name (str): The name of the product.
@@ -60,8 +73,8 @@ class ProductWithProperty:
     """
     Represents a product with a name and price using a property with a setter.
 
-    * Advantages: Cleaner code, more intuitive syntax for accessing attributes. Validation is handled automatically.
-    * Disadvantages: Limited to simpler use cases; not ideal for reusable logic across multiple classes.
+    * Advantages: Cleaner code, more intuitive syntax for accessing attributes (auto validation).
+    * Disadvantages: Limited to simpler use cases; not ideal for reusable logic across many classes.
 
     Attributes:
         name (str): The name of the product.
@@ -212,3 +225,8 @@ print("ProductWithDescriptor passed all tests")
 # product3.price = -500.0  # Should raise ValueError
 
 print("All tests passed!")
+
+# For this task, the @property approach is the most convenient.
+# It provides a clean and intuitive way to work with attributes while requiring
+# minimal additional code. Descriptors are better suited for more complex scenarios
+# where reusable or specialized behavior is needed across multiple classes.

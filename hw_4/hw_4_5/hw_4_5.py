@@ -1,3 +1,12 @@
+"""
+This module demonstrates the use of generators and context managers.
+
+- `even_number_generator`: An infinite generator that yields a sequence of even numbers.
+- `LimitGeneratorToFile`: A context manager for writing a limited number of lines to a file.
+
+This module showcases advanced Python concepts for efficient and concise code.
+"""
+
 from typing import Generator, IO, Any
 
 
@@ -59,15 +68,15 @@ class LimitGeneratorToFile:
             self.file.close()
 
 
-output_file_path = "even_numbers.txt"
-number_limit = 100
+OUTPUT_FILE_PATH = "even_numbers.txt"
+NUMBER_LIMIT = 100
 
 even_numbers = even_number_generator()
 
-with LimitGeneratorToFile(output_file_path, number_limit) as file:
-    for _ in range(number_limit):
+with LimitGeneratorToFile(OUTPUT_FILE_PATH, NUMBER_LIMIT) as file:
+    for _ in range(NUMBER_LIMIT):
         file.write(f"{next(even_numbers)}\n")
 
-print(f"First {number_limit} even numbers saved to {output_file_path}.")
+print(f"First {NUMBER_LIMIT} even numbers saved to {OUTPUT_FILE_PATH}.")
 
 print("All tests passed!")

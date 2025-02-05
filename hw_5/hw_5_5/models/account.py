@@ -1,3 +1,16 @@
+"""
+This module defines the Account class, representing a bank account.
+
+The Account class provides methods for:
+
+- Managing the account balance.
+- Performing deposit and withdrawal operations.
+
+This class encapsulates the core logic for managing account balances
+and provides a clear and reusable interface for other parts of the
+banking system.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_5.enums.currency import Currency

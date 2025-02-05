@@ -1,3 +1,17 @@
+"""
+This module demonstrates object introspection in Python.
+
+The `analyze_object` function provides a basic inspection of a given object.
+It prints the object's type and a list of its attributes and methods.
+
+The `MyClass` class is a simple example class used to demonstrate the
+object introspection functionality.
+
+This module provides a basic example of how to explore the structure
+and attributes of Python objects.
+"""
+
+
 def analyze_object(o: object) -> None:
     """
     Analyze object and print its type, attributes, and methods.

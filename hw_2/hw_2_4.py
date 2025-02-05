@@ -1,3 +1,16 @@
+"""
+This module demonstrates dynamic class creation in Python.
+
+The `create_class` function allows you to dynamically create a new class
+with a given name and a dictionary of methods. This provides a flexible way
+to define classes at runtime.
+
+The module includes an example of creating a dynamic class with
+`say_hello` and `say_goodbye` methods, demonstrating the usage of the
+`create_class` function.
+"""
+
+
 def create_class(class_name: str, class_methods: dict[str, callable]) -> type:
     """
     Create a class dynamically with the given class name and methods.

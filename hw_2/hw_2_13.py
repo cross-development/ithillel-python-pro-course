@@ -1,3 +1,18 @@
+"""
+This module demonstrates a metaclass that automatically generates
+getter and setter methods for class attributes.
+
+The `AutoMethodMeta` metaclass dynamically creates `get_{attr_name}`
+and `set_{attr_name}` methods for each attribute defined in the class.
+
+The `Person` class uses the `AutoMethodMeta` metaclass to demonstrate
+the automatic generation of getter and setter methods for its 'name' and 'age' attributes.
+
+This module provides an example of how to use metaclasses to
+enhance class functionality and reduce boilerplate code.
+"""
+
+
 class AutoMethodMeta(type):
     """
     A metaclass that automatically generates getter and setter methods for each attribute.
@@ -19,7 +34,7 @@ class AutoMethodMeta(type):
         # Create a new dictionary to store generated methods
         methods = {}
 
-        for attr_name, attr_value in dct.items():
+        for attr_name, _ in dct.items():
             if not attr_name.startswith("__"):
                 # Create a getter method
                 def getter(self, attr_name=attr_name):

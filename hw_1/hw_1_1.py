@@ -1,3 +1,15 @@
+"""
+This module provides a function to calculate the area of a circle.
+
+The `calculate_circle_area` function takes the radius of a circle as input
+and returns its area using the formula:
+
+    Area = π * radius^2
+
+The module also includes a simple example usage and unit tests
+to demonstrate the functionality.
+"""
+
 import math
 
 
@@ -24,5 +36,5 @@ user_input = float(input("Enter the radius of a circle: "))
 
 print(calculate_circle_area(user_input))
 
-assert calculate_circle_area(2) == 12.566370614359172, "Calculated circle area is 12.566370614359172"
+assert calculate_circle_area(2) == 12.566370614359172, "Calculated circle area is 12.56637061435917"
 assert calculate_circle_area(0) == 0.0, "Calculated circle area is 0.0"

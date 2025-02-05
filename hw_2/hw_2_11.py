@@ -1,3 +1,19 @@
+"""
+This module demonstrates a metaclass that limits the number of attributes
+a class can have.
+
+The `LimitedAttributesMeta` metaclass checks the number of attributes
+defined in a class during its creation. If the number of attributes
+exceeds the maximum allowed limit, it raises a TypeError.
+
+The `LimitedClass` class uses the `LimitedAttributesMeta` metaclass
+to enforce a limit of 3 attributes.
+
+This module provides an example of how to use metaclasses to control
+the creation and structure of classes.
+"""
+
+
 class LimitedAttributesMeta(type):
     """
     A metaclass that ensures a class has a limited number of attributes.

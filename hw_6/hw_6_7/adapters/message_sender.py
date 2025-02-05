@@ -1,3 +1,17 @@
+"""
+This module defines the MessageSender abstract base class.
+
+The MessageSender interface defines a common method, `send_message(message)`,
+for sending messages through various channels (e.g., email, SMS, push notifications).
+
+Subclasses of MessageSender are expected to implement this method
+with the specific logic for sending messages via their respective channels.
+
+This interface promotes consistent message sending behavior
+across different communication channels.
+"""
+
+
 class MessageSender:
     """
     Base class for message senders.
@@ -15,5 +29,3 @@ class MessageSender:
         Args:
             message (str): The message to send.
         """
-
-        pass

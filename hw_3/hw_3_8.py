@@ -1,9 +1,15 @@
 """
-The Price class is well-suited for integration into a PaymentGateway as it ensures accuracy in financial calculations,
-encapsulates monetary operations, and enforces data integrity. By rounding values to two decimal places and providing
-a clean API for addition, subtraction, and comparison, it simplifies handling key financial components like order totals,
-fees, and discounts. Its design also prevents common issues with floating-point arithmetic, making it a reliable
-foundation for processing transactions in a consistent and precise manner.
+This module defines a Price class representing a monetary value with an amount and currency.
+
+The Price class provides:
+
+- Methods for creating Price objects with amount and currency.
+- String representation of the Price object in the format "{amount:.2f} {currency}".
+- Arithmetic operations: addition and subtraction for prices in the same currency.
+- Comparison methods: equality, less than, and greater than comparisons based on the prices.
+- Input validation to ensure non-negative amounts and consistent currencies for operations.
+
+The module includes unit tests to verify the correctness of the implemented methods.
 """
 
 
@@ -101,7 +107,8 @@ class Price:
             ValueError: If the currencies of the two Price objects are different.
 
         Returns:
-            bool: True if the amount of this Price is less than the amount of the other Price object, False otherwise.
+            bool: True if the amount of this Price is less than the amount of the other \
+                  Price object, False otherwise.
         """
         if self.currency != other.currency:
             raise ValueError("Cannot compare prices in different currencies")
@@ -119,7 +126,8 @@ class Price:
             ValueError: If the currencies of the two Price objects are different.
 
         Returns:
-            bool: True if the amount of this Price is greater than the amount of the other Price object, False otherwise.
+            bool: True if the amount of this Price is greater than the amount of the other \
+                  Price object, False otherwise.
         """
         if self.currency != other.currency:
             raise ValueError("Cannot compare prices in different currencies")
@@ -153,9 +161,16 @@ print(f"p1 - p2: {p1 - p2}")
 assert str(p1 - p2) == "50.00 USD", "Difference of p1 - p2 should be 50.00 USD"
 
 print(f"p1 > p2: {p1 > p2}")
-assert (p1 > p2) == True, "p1 should be greater then p2"
+assert (p1 > p2) is True, "p1 should be greater then p2"
 
 print(f"p1 < p2: {p1 < p2}")
-assert (p1 < p2) == False, "p2 should not be greater then p1"
+assert (p1 < p2) is False, "p2 should not be greater then p1"
 
 print("All tests passed!")
+
+# The Price class is well-suited for integration into a PaymentGateway as it ensures accuracy
+# in financial calculations, encapsulates monetary operations, and enforces data integrity.
+# By rounding values to two decimal places and providing a clean API for addition, subtraction,
+# and comparison, it simplifies handling key financial components like order totals, fees, and
+# discounts. Its design also prevents common issues with floating-point arithmetic, making it
+# a reliable foundation for processing transactions in a consistent and precise manner.

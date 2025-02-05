@@ -1,3 +1,17 @@
+"""
+This module defines a Person class representing a person with a name and age.
+
+The Person class provides:
+
+- Comparison methods (__lt__, __eq__, __gt__) to compare people based on their age.
+- A string representation of the person object.
+
+The module demonstrates how to use these comparison methods to sort a list of Person objects.
+
+The included unit test verifies the correctness of the sorting.
+"""
+
+
 class Person:
     """
     Represents a person with a name and age.
@@ -76,6 +90,7 @@ sorted_people = sorted(people)
 print(sorted_people)
 
 assert all(p1.age <= p2.age for p1, p2 in
-           zip(sorted_people, sorted_people[1:])), "Each person should be younger than or equal to the next person"
+           zip(sorted_people, sorted_people[1:])), \
+    "Each person should be younger than or equal to the next person"
 
 print("All tests passed!")

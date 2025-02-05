@@ -1,3 +1,15 @@
+"""
+This module defines a Fraction class representing mathematical fractions.
+
+The Fraction class provides methods for:
+
+- Creating Fraction objects.
+- Performing arithmetic operations (addition, subtraction, multiplication, division) on fractions.
+- Representing the Fraction object as a string.
+
+The module includes unit tests to verify the correctness of the implemented operations.
+"""
+
 from math import gcd
 
 

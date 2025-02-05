@@ -1,3 +1,17 @@
+"""
+This module defines an abstract base class, BaseHandler,
+for implementing request handlers in a chain-of-responsibility pattern.
+
+The BaseHandler class provides a common interface and
+mechanisms for:
+
+- Setting the next handler in the chain.
+- Handling requests and optionally passing them to the next handler.
+
+This abstract class ensures consistent behavior and facilitates
+the creation of flexible request handling pipelines.
+"""
+
 from typing import Optional
 from abc import ABC, abstractmethod
 

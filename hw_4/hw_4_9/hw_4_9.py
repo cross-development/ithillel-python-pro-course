@@ -1,3 +1,12 @@
+"""
+This module provides a BackupManager context manager for creating backups of files
+before processing and restoring them in case of errors.
+
+The BackupManager creates a backup of the specified file before entering the `with` block.
+If an exception occurs within the `with` block, the BackupManager restores the original
+file from the backup. This ensures data integrity and allows for easy recovery in case of issues.
+"""
+
 import os
 import shutil
 from typing import Any
@@ -50,11 +59,11 @@ class BackupManager:
         return True
 
 
-file_to_process = 'important_file.txt'
+FILE_TO_PROCESS = 'important_file.txt'
 
 try:
-    with BackupManager(file_to_process) as manager:
-        with open(file_to_process, 'w', encoding='utf-8') as f:
+    with BackupManager(FILE_TO_PROCESS) as manager:
+        with open(FILE_TO_PROCESS, 'w', encoding='utf-8') as f:
             f.write("This is the updated content.")
 
         print("File processed successfully.")

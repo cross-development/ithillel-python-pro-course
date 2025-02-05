@@ -1,3 +1,15 @@
+"""
+This module demonstrates dynamic property addition in Python.
+
+The `DynamicProperties` class allows you to dynamically add new properties
+to objects at runtime. This provides flexibility in defining object attributes
+based on specific needs.
+
+The module includes an example of adding a dynamic property named 'name'
+to an instance of the `DynamicProperties` class.
+"""
+
+
 class DynamicProperties:
     """
     A class that allows dynamic addition of properties during runtime.
@@ -20,7 +32,8 @@ class DynamicProperties:
                 self_obj: The instance of the class.
 
             Returns:
-                any: The value of the property, or the default value if the property has not been set.
+                any: The value of the property, or the default value \
+                     if the property has not been set.
             """
             return self_obj.__dict__.get(name, default_value)
 

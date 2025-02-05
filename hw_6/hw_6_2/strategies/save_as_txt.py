@@ -1,3 +1,9 @@
+"""
+This module defines the SaveAsTxt class, a concrete implementation of the SaveStrategy interface.
+
+The SaveAsTxt class provides functionality for saving content to a plain text (TXT) file.
+"""
+
 from hw_6.hw_6_2.strategies.save_strategy import SaveStrategy
 
 

@@ -1,3 +1,11 @@
+"""
+This module defines an Enum, GameResource, representing different
+resources available in a game.
+
+The GameResource enum provides a set of named constants for common game resources
+such as GOLD, WOOD, STONE, and FOOD, improving code readability and maintainability.
+"""
+
 from enum import Enum
 
 

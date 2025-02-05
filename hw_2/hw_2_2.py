@@ -1,4 +1,21 @@
-def call_function(obj: object, method_name: str, *args: float) -> float:
+"""
+This module demonstrates dynamic method calling in Python.
+
+The `call_function` function allows you to dynamically call a method of an object
+by providing the object, the method name as a string, and any arguments
+the method requires.
+
+The `Calculator` class provides simple arithmetic operations (addition and subtraction)
+as an example to demonstrate the use of the `call_function`.
+
+This module illustrates a technique for dynamically interacting with objects
+and their methods at runtime.
+"""
+
+from typing import Optional
+
+
+def call_function(obj: object, method_name: str, *args: float) -> Optional[float]:
     """
     Dynamically calls a method of an object by its name.
 
@@ -17,6 +34,7 @@ def call_function(obj: object, method_name: str, *args: float) -> float:
         return getattr(obj, method_name)(*args)
     except AttributeError:
         print(f"{method_name} not found.")
+        return None
 
 
 class Calculator:

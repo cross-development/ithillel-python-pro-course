@@ -1,3 +1,16 @@
+"""
+This module defines the JsonHandler class, providing methods for reading and
+writing data to JSON files.
+
+Key functionalities:
+
+- `read_json(file_path)`: Reads data from a JSON file and returns it as a list of dictionaries.
+- `write_json(file_path, data)`: Writes a list of dictionaries to a JSON file.
+
+The class includes robust error handling for potential issues during file operations
+and JSON data processing.
+"""
+
 import json
 from typing import List, Dict
 
@@ -28,8 +41,8 @@ class JsonHandler:
                 return json.load(file)
         except FileNotFoundError:
             raise FileNotFoundError(f"File {file_path} not found.")
-        except json.JSONDecodeError:
-            raise json.JSONDecodeError(f"Invalid JSON format in file {file_path}.")
+        except json.JSONDecodeError as e:
+            raise json.JSONDecodeError(f"Invalid JSON format in file {file_path}.", e.doc, e.pos)
         except Exception as e:
             raise Exception(f"Error reading JSON file: {e}")
 

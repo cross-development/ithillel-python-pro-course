@@ -1,3 +1,13 @@
+"""
+This module provides a demonstration of the transaction processing system.
+
+It creates an Account, initializes a chain of transaction handlers
+(BalanceCheckHandler, WithdrawalHandler, PurchaseHandler, DepositHandler),
+and processes a series of transactions. This demonstrates the
+workflow of the transaction processing system, including
+balance checks and error handling.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_5.models.account import Account

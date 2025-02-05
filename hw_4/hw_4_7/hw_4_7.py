@@ -1,3 +1,15 @@
+"""
+This module provides functions for filtering and extracting error lines from log files.
+
+- `error_line_generator`: A generator function that yields lines containing HTTP error codes \
+                          (4XX or 5XX) from a log file.
+- `extract_errors_to_file`: Extracts error lines from a log file and writes them to \
+                            a new output file.
+
+The module utilizes regular expressions for efficient error code matching and includes \
+error handling for potential exceptions.
+"""
+
 import re
 from typing import Iterator
 
@@ -50,9 +62,9 @@ def extract_errors_to_file(log_file_path: str, output_file_path: str) -> None:
         print(f"An unexpected error occurred: {e}")
 
 
-log_file_pathname = "server.log"
-output_file_pathname = "errors.log"
+LOG_FILE_PATHNAME = "server.log"
+OUTPUT_FILE_PATHNAME = "errors.log"
 
-extract_errors_to_file(log_file_pathname, output_file_pathname)
+extract_errors_to_file(LOG_FILE_PATHNAME, OUTPUT_FILE_PATHNAME)
 
 print("All tests passed!")

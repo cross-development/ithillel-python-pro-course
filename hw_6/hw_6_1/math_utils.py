@@ -1,3 +1,14 @@
+"""
+This module provides two mathematical functions:
+
+- `factorial(n)`: Calculates the factorial of a non-negative integer `n`.
+- `gcd(a, b)`: Calculates the greatest common divisor (GCD) of two integers `a` and `b`.
+
+The `factorial` function uses recursion to calculate the factorial,
+while the `gcd` function utilizes the Euclidean algorithm.
+"""
+
+
 def factorial(n: int) -> int:
     """
     Calculates the factorial of a non-negative integer.

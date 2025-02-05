@@ -1,3 +1,12 @@
+"""
+This module defines the SaveAsXml class, a concrete implementation of
+the SaveStrategy interface.
+
+The SaveAsXml class provides functionality for saving content as an XML file.
+It creates a simple XML structure with a root element and a child element
+containing the given content.
+"""
+
 import xml.etree.ElementTree as ET
 
 from hw_6.hw_6_2.strategies.save_strategy import SaveStrategy

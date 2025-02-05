@@ -1,3 +1,18 @@
+"""
+This module demonstrates a metaclass that enforces type checking for class attributes.
+
+The `TypeCheckedMeta` metaclass modifies the `__setattr__` method of the class
+to check if the assigned value matches the declared type in the class's
+annotations. If the type mismatch occurs, it raises a TypeError.
+
+The `Person` class uses the `TypeCheckedMeta` metaclass to ensure that
+the `name` attribute is a string and the `age` attribute is an integer.
+
+This module provides an example of how to use metaclasses to enhance
+type safety and prevent unexpected behavior in your classes.
+"""
+
+
 class TypeCheckedMeta(type):
     """
     A metaclass that ensures type checking for attributes when they are set.
@@ -11,7 +26,7 @@ class TypeCheckedMeta(type):
         Args:
             name (str): The name of the class being created.
             bases (tuple): The base classes of the class being created.
-            dct (dict): The dictionary containing the class body, including its attributes and methods.
+            dct (dict): The dictionary containing the class body, including its attributes.
 
         Returns:
             type: The newly created class with the custom __setattr__ method.
@@ -35,7 +50,8 @@ class TypeCheckedMeta(type):
 
                 if not isinstance(value, expected_type):
                     raise TypeError(
-                        f"'{key}' should be of type '{expected_type.__name__}', got '{type(value).__name__}'")
+                        f"'{key}' should be of type '{expected_type.__name__}', \
+                         got '{type(value).__name__}'")
 
             if original_setattr:
                 original_setattr(self, key, value)

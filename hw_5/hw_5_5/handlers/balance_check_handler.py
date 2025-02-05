@@ -1,3 +1,13 @@
+"""
+This module defines the BalanceCheckHandler class, which extends the TransactionHandler
+and is responsible for checking if an account has sufficient funds before
+proceeding with a transaction.
+
+The BalanceCheckHandler verifies that the account balance is sufficient
+for the requested transaction amount. If insufficient funds are detected,
+an InsufficientFundsException is raised.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_5.models.account import Account
@@ -30,6 +40,7 @@ class BalanceCheckHandler(TransactionHandler):
             if account.balance < amount:
                 raise InsufficientFundsException(amount, account.balance, account.currency, transaction_type)
 
-        print(f"✅ Balance check passed for {transaction_type.value}: {amount} {account.currency}.")
+        print(f"✅ Balance check passed for {transaction_type.value}: \
+            {amount} {account.currency}.")
 
         super().handle(account, amount, transaction_type)

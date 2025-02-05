@@ -1,3 +1,13 @@
+"""
+This module provides a simple demonstration of the request handling system.
+
+It creates a Player object, initializes a ResourceCheckHandler,
+and simulates a series of game actions (requests) to be processed
+by the handler. This demonstrates the basic workflow of the request
+handling system and how the ResourceCheckHandler verifies
+player resources before proceeding with the action.
+"""
+
 from hw_5.hw_5_4.enums.game_action import GameAction
 from hw_5.hw_5_4.enums.game_resource import GameResource
 from hw_5.hw_5_4.models.player import Player

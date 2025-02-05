@@ -1,3 +1,14 @@
+"""
+This module defines the Calculator class, which provides a flexible framework
+for performing various arithmetic operations on decimal numbers.
+
+The Calculator utilizes the Strategy pattern to dynamically select and
+execute the appropriate operation based on the provided operator.
+
+The class includes robust error handling for invalid inputs,
+division by zero, and potential overflow errors.
+"""
+
 from typing import Dict
 from decimal import Decimal, InvalidOperation
 
@@ -14,7 +25,8 @@ class Calculator:
     A calculator class that performs arithmetic operations based on a given strategy.
 
     Attributes:
-        operations (Dict[str, OperationStrategy]): A dictionary mapping operators to their corresponding strategies.
+        operations (Dict[str, OperationStrategy]): A dictionary mapping operators to \
+                                                   their corresponding strategies.
     """
 
     def __init__(self) -> None:

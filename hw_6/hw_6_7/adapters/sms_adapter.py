@@ -1,3 +1,17 @@
+"""
+This module defines the SmsAdapter class, which adapts the SmsService
+interface to the MessageSender interface.
+
+The SmsAdapter:
+
+- Uses the SmsService to send SMS messages.
+- Encapsulates the phone number to send SMS messages to.
+- Provides a consistent `send_message` interface that aligns with the MessageSender.
+
+This adapter facilitates the use of the SmsService within a system
+that expects a more generic MessageSender interface.
+"""
+
 from hw_6.hw_6_7.adapters.message_sender import MessageSender
 from hw_6.hw_6_7.services.sms_service import SmsService
 

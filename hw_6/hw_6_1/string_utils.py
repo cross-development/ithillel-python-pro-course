@@ -1,3 +1,11 @@
+"""
+This module provides two string utility functions:
+
+- `to_upper(string)`: Converts a string to uppercase.
+- `trim_whitespace(string)`: Removes leading and trailing whitespace from a string.
+"""
+
+
 def to_upper(string: str) -> str:
     """
     Converts a string to uppercase.

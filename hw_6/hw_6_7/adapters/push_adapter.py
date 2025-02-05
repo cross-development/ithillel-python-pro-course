@@ -1,3 +1,17 @@
+"""
+This module defines the PushAdapter class, which adapts the PushService
+interface to the MessageSender interface.
+
+The PushAdapter:
+
+- Uses the PushService to send push notifications.
+- Encapsulates the device ID for targeted push notifications.
+- Provides a consistent `send_message` interface that aligns with the MessageSender.
+
+This adapter facilitates the use of the PushService within a system
+that expects a more generic MessageSender interface.
+"""
+
 from hw_6.hw_6_7.adapters.message_sender import MessageSender
 from hw_6.hw_6_7.services.push_service import PushService
 

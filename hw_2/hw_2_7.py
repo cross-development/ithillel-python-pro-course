@@ -1,3 +1,14 @@
+"""
+This module demonstrates a decorator for logging method calls in a class.
+
+The `log_methods` decorator modifies a class by wrapping each of its methods
+with a logging function. This allows you to track which methods are called
+and with what arguments, providing insights into the object's behavior.
+
+The `MyClass` class with `add` and `subtract` methods serves as an example
+to demonstrate the usage of the `log_methods` decorator.
+"""
+
 import inspect
 
 

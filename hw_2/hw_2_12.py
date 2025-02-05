@@ -1,3 +1,18 @@
+"""
+This module demonstrates a metaclass that adds logging functionality
+to attribute access and modification in a class.
+
+The `LoggingMeta` metaclass intercepts attribute access and modification
+operations and logs them to the console.
+
+The `MyClass` class uses the `LoggingMeta` metaclass to demonstrate
+the logging behavior.
+
+This module provides an example of how to use metaclasses to modify
+the behavior of classes in powerful ways.
+"""
+
+
 class LoggingMeta(type):
     """
     A metaclass that adds logging functionality to attribute access and modification in a class.

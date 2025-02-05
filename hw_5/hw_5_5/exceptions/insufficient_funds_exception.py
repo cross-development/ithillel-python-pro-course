@@ -1,3 +1,13 @@
+"""
+This module defines a custom exception, InsufficientFundsException,
+specifically for handling cases where an account lacks sufficient funds
+to complete a requested transaction.
+
+The exception provides detailed information about the transaction
+(type, required amount, current balance, and currency),
+making it easier to diagnose and handle insufficient funds situations.
+"""
+
 from decimal import Decimal
 
 from hw_5.hw_5_5.enums.currency import Currency
@@ -24,7 +34,9 @@ class InsufficientFundsException(Exception):
             transaction_type (TransactionType): The type of the transaction.
         """
         super().__init__(
-            f"Insufficient funds for {transaction_type.value}. Required: {required_amount} {currency.value}, current balance: {current_balance} {currency.value}")
+            f"Insufficient funds for {transaction_type.value}. \
+            Required: {required_amount} {currency.value}, \
+            current balance: {current_balance} {currency.value}")
 
         self.required_amount = required_amount
         self.current_balance = current_balance

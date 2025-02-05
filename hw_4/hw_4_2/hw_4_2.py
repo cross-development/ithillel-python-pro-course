@@ -1,3 +1,9 @@
+"""
+This module provides a UniqueIDIterator class for generating unique identifiers.
+The iterator utilizes the UUID4 algorithm from the `uuid` library to efficiently
+produce a series of unique identifiers.
+"""
+
 import uuid
 from typing import Iterator
 
