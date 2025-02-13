@@ -9,6 +9,12 @@ def is_strong_password(password: str) -> bool:
     """
     Checks if the given password is strong.
 
+    A password is considered strong if it:
+        - contains at least 8 characters,
+        - contains at least one digit,
+        - contains at least one uppercase letter and one lowercase letter,
+        - contains at least one special character (@, #, $, %, &, etc.).
+
     Args:
         password (str): The password to validate.
 
