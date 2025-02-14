@@ -7,26 +7,40 @@ from typing import Dict
 from collections import Counter
 
 
-def analyze_log(log_content: str) -> Dict[str, int]:
+def analyze_log_file(file_path: str) -> Dict[str, int]:
     """
-    Analyzes a web server log and counts requests per IP address.
+    Reads a web server log file and counts requests from different IP addresses.
 
     Args:
-        log_content (str): The content of the log file.
+        file_path (str): Path to the log file.
 
     Returns:
-        Dict[str, int]: A dictionary with IP addresses as keys and request counts as values.
+        Dict[str, int]: A dictionary mapping IP addresses to the number of requests.
     """
 
-    pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
-    ip_addresses = re.findall(pattern, log_content)
+    ip_pattern = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+    ip_counter = Counter()
 
-    return dict(Counter(ip_addresses))
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            for line in file:
+                match = re.search(ip_pattern, line)
+
+                if match:
+                    ip_counter[match.group()] += 1
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        return {}
+
+    return dict(ip_counter)
 
 
 if __name__ == "__main__":
-    SAMPLE_LOG = "192.168.0.1 - GET /index.html\n \
-                  192.168.0.1 - GET /about.html\n \
-                  180.151.0.2 - POST /login\n"
+    LOG_FILE = "web_server.log"
+    statistics = analyze_log_file(LOG_FILE)
 
-    print(analyze_log(SAMPLE_LOG))
+    if statistics:
+        print("IP Address Request Count:")
+
+        for ip, count in statistics.items():
+            print(f"{ip}: {count}")
