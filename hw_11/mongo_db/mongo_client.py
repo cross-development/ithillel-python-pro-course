@@ -5,7 +5,7 @@ Singleton for MongoDB connection.
 from pymongo import MongoClient
 from pymongo.database import Database
 
-from hw_11.mongo_db.config import MONGO_DB_NAME, MONGO_URI
+from hw_11.mongo_db.configs.mongo_config import MONGO_DB_NAME, MONGO_URI
 
 
 class MongoDBClient:

@@ -6,8 +6,8 @@ from typing import List
 from uuid import UUID, uuid4
 from datetime import datetime, UTC
 
-from hw_11.cassandra_db.models import EventLog
-from hw_11.cassandra_db.log_repository import LogRepository
+from hw_11.cassandra_db.models.event_log import EventLog
+from hw_11.cassandra_db.repositories.log_repository import LogRepository
 
 
 class LogService:

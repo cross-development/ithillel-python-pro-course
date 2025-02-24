@@ -1,4 +1,6 @@
-"""Data models for user session."""
+"""
+Data models for user session.
+"""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -6,7 +8,9 @@ from datetime import datetime
 
 @dataclass
 class UserSession:
-    """Represents a user session model."""
+    """
+    Represents a user session model.
+    """
 
     user_id: str
     session_token: str

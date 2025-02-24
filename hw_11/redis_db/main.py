@@ -1,10 +1,14 @@
-"""Main script for user session management."""
+"""
+Main script for user session management.
+"""
 
-from hw_11.redis_db.session_service import SessionService
+from hw_11.redis_db.services.session_service import SessionService
 
 
 def main() -> None:
-    """Run the console-based session management system."""
+    """
+    Run the console-based session management system.
+    """
 
     session_service = SessionService()
 

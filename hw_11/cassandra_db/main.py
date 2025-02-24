@@ -4,7 +4,7 @@ Main script for event log management.
 
 from uuid import UUID
 
-from hw_11.cassandra_db.log_service import LogService
+from hw_11.cassandra_db.services.log_service import LogService
 
 
 def main() -> None:

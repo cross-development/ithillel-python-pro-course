@@ -5,9 +5,9 @@ Service layer for managing orders.
 from typing import List, Dict
 from bson import ObjectId
 
-from hw_11.mongo_db.models import Order, OrderItem
-from hw_11.mongo_db.order_repository import OrderRepository
-from hw_11.mongo_db.product_repository import ProductRepository
+from hw_11.mongo_db.models.order import Order, OrderItem
+from hw_11.mongo_db.repositories.order_repository import OrderRepository
+from hw_11.mongo_db.repositories.product_repository import ProductRepository
 
 
 class OrderService:

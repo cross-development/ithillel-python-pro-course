@@ -1,23 +1,30 @@
-"""Repository for managing user sessions in Redis."""
+"""
+Repository for managing user sessions in Redis.
+"""
 
 import json
 from datetime import datetime
 
 from hw_11.redis_db.redis_client import RedisClient
-from hw_11.redis_db.models import UserSession
-from hw_11.redis_db.config import SESSION_TTL
+from hw_11.redis_db.models.user_session import UserSession
+from hw_11.redis_db.configs.redis_config import SESSION_TTL
 
 
 class SessionRepository:
-    """Handles CRUD operations for user sessions in Redis."""
+    """
+    Handles CRUD operations for user sessions in Redis.
+    """
 
     def __init__(self) -> None:
-        """Initialize Redis client instance."""
+        """
+        Initialize Redis client instance.
+        """
 
         self.client = RedisClient().get_client()
 
     def create_session(self, session: UserSession) -> None:
-        """Create a new user session.
+        """
+        Create a new user session.
 
         Args:
             session (UserSession): The session object to store.
@@ -31,7 +38,8 @@ class SessionRepository:
         self.client.setex(f"session:{session.user_id}", SESSION_TTL, json.dumps(session_data))
 
     def get_session(self, user_id: str) -> UserSession | None:
-        """Retrieve an active session for a user.
+        """
+        Retrieve an active session for a user.
 
         Args:
             user_id (str): The user ID.
@@ -54,7 +62,8 @@ class SessionRepository:
         )
 
     def update_session_activity(self, user_id: str) -> None:
-        """Update the session's last activity time.
+        """
+        Update the session's last activity time.
 
         Args:
             user_id (str): The user ID.
@@ -70,7 +79,8 @@ class SessionRepository:
         return self.create_session(session)
 
     def delete_session(self, user_id: str) -> None:
-        """Delete a user session.
+        """
+        Delete a user session.
 
         Args:
             user_id (str): The user ID.

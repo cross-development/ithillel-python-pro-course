@@ -6,9 +6,9 @@ from uuid import UUID
 from typing import List
 from datetime import datetime, timedelta, UTC
 
-from hw_11.cassandra_db.models import EventLog
+from hw_11.cassandra_db.models.event_log import EventLog
 from hw_11.cassandra_db.cassandra_client import CassandraClient
-from hw_11.cassandra_db.config import CASSANDRA_TABLE, LOG_RETENTION_DAYS
+from hw_11.cassandra_db.configs.cassandra_config import CASSANDRA_TABLE, LOG_RETENTION_DAYS
 
 
 class LogRepository:

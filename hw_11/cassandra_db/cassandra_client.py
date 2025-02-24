@@ -4,7 +4,7 @@ Singleton class for Cassandra connection.
 
 from cassandra.cluster import Cluster, Session
 
-from hw_11.cassandra_db.config import CASSANDRA_HOSTS, CASSANDRA_KEYSPACE
+from hw_11.cassandra_db.configs.cassandra_config import CASSANDRA_HOSTS, CASSANDRA_KEYSPACE
 
 
 class CassandraClient:

@@ -2,12 +2,12 @@
 Main script for online store management.
 """
 
-from bson import ObjectId
 from datetime import datetime
+from bson import ObjectId
 
-from hw_11.mongo_db.product_service import ProductService
-from hw_11.mongo_db.order_service import OrderService
-from hw_11.mongo_db.statistics_service import StatisticsService
+from hw_11.mongo_db.services.order_service import OrderService
+from hw_11.mongo_db.services.product_service import ProductService
+from hw_11.mongo_db.services.statistics_service import StatisticsService
 
 
 def main() -> None:

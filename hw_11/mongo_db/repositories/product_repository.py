@@ -7,7 +7,7 @@ from bson import ObjectId
 from pymongo import ASCENDING
 from pymongo.collection import Collection
 
-from hw_11.mongo_db.models import Product
+from hw_11.mongo_db.models.product import Product
 from hw_11.mongo_db.mongo_client import MongoDBClient
 
 

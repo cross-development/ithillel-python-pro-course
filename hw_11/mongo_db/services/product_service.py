@@ -5,8 +5,8 @@ Service layer for managing products.
 from typing import Optional
 from bson import ObjectId
 
-from hw_11.mongo_db.models import Product
-from hw_11.mongo_db.product_repository import ProductRepository
+from hw_11.mongo_db.models.product import Product
+from hw_11.mongo_db.repositories.product_repository import ProductRepository
 
 
 class ProductService:

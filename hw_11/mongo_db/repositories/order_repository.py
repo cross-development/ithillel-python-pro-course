@@ -3,11 +3,11 @@ Repository for managing orders in MongoDB.
 """
 
 from typing import List
+from datetime import datetime, timedelta, UTC
 from bson import ObjectId
 from pymongo.collection import Collection
-from datetime import datetime, timedelta, UTC
 
-from hw_11.mongo_db.models import Order
+from hw_11.mongo_db.models.order import Order
 from hw_11.mongo_db.mongo_client import MongoDBClient
 
 

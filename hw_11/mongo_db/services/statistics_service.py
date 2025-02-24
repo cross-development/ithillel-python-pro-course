@@ -39,7 +39,8 @@ class StatisticsService:
             end_date (datetime): The end date of the period.
 
         Returns:
-            int: The total number of products sold in the given period. Returns 0 if no data is found.
+            int: The total number of products sold in the given period. \
+                 Returns 0 if no data is found.
         """
 
         pipeline = [
