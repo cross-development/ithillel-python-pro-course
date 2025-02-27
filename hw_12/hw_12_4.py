@@ -57,7 +57,7 @@ def start_server(host: str = "localhost", port: int = 8080) -> HTTPServer:
 
 
 if __name__ == "__main__":
-    server = start_server()
+    new_server = start_server()
     input("Press Enter to stop the server...\n")
-    server.shutdown()
+    new_server.shutdown()
     print("Server stopped.")

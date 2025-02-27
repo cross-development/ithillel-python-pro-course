@@ -5,8 +5,8 @@ This module allows downloading multiple files concurrently using threading.
 """
 
 import threading
-import requests
 from typing import List, Tuple
+import requests
 
 
 def download_file(url: str, filename: str) -> None:
@@ -22,7 +22,7 @@ def download_file(url: str, filename: str) -> None:
     """
 
     try:
-        response = requests.get(url, stream=True)
+        response = requests.get(url, stream=True, timeout=5)
         response.raise_for_status()
 
         with open(filename, 'wb') as file:

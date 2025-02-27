@@ -5,9 +5,9 @@ This module resizes multiple images concurrently using ThreadPoolExecutor.
 """
 
 import os
-from PIL import Image
-from typing import Tuple, List
 from concurrent.futures import ThreadPoolExecutor
+from typing import Tuple, List
+from PIL import Image
 
 
 def resize_image(image_path: str, output_path: str, size: Tuple[int, int] = (128, 128)) -> None:
@@ -48,19 +48,19 @@ def resize_images_concurrently(image_paths: List[str], output_paths: List[str],
         for image_path, output_path in zip(image_paths, output_paths):
             executor.submit(resize_image, image_path, output_path, size)
 
-    print("✅ All images processed.")
+    print("All images processed.")
 
 
 if __name__ == "__main__":
-    image_paths = [
+    image_file_paths = [
         "images/image_1.jpg",
         "images/image_2.jpg",
         "images/image_3.jpg"
     ]
-    output_paths = [
+    output_file_paths = [
         "images/resized/resized_1.jpg",
         "images/resized/resized_2.jpg",
         "images/resized/resized_3.jpg"
     ]
 
-    resize_images_concurrently(image_paths, output_paths)
+    resize_images_concurrently(image_file_paths, output_file_paths)

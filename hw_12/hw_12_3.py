@@ -54,7 +54,7 @@ def parallel_sum(numbers: List[int], num_processes: int = 4) -> int:
 
 
 if __name__ == "__main__":
-    numbers = list(range(1_000_000))
-    total = parallel_sum(numbers)
+    numbers_to_sum = list(range(1_000_000))
+    total = parallel_sum(numbers_to_sum)
 
     print(f"Total sum: {total}")
