@@ -4,7 +4,7 @@ Multi-threaded File Downloader.
 This module allows downloading multiple files concurrently using threading.
 """
 
-import threading
+from threading import Thread
 from typing import List, Tuple
 import requests
 
@@ -45,7 +45,7 @@ def download_files_concurrently(urls: List[Tuple[str, str]]) -> None:
     threads = []
 
     for url, filename in urls:
-        thread = threading.Thread(target=download_file, args=(url, filename))
+        thread = Thread(target=download_file, args=(url, filename))
         threads.append(thread)
         thread.start()
 

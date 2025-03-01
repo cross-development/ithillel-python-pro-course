@@ -4,7 +4,7 @@ Simple Multithreaded HTTP Server.
 This module starts an HTTP server in a separate thread and serves basic GET requests.
 """
 
-import threading
+from threading import Thread
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
 
@@ -48,7 +48,7 @@ def start_server(host: str = "localhost", port: int = 8080) -> HTTPServer:
     """
 
     server = HTTPServer((host, port), SimpleRequestHandler)
-    thread = threading.Thread(target=serve_forever, args=(server,), daemon=True)
+    thread = Thread(target=serve_forever, args=(server,), daemon=True)
     thread.start()
 
     print(f"Server is running on http://{host}:{port}")

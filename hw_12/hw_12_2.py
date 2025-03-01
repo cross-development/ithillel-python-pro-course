@@ -4,7 +4,7 @@ Multi-threaded Image Resizer.
 This module resizes multiple images concurrently using ThreadPoolExecutor.
 """
 
-import os
+from os import cpu_count
 from concurrent.futures import ThreadPoolExecutor
 from typing import Tuple, List
 from PIL import Image
@@ -44,7 +44,7 @@ def resize_images_concurrently(image_paths: List[str], output_paths: List[str],
         size (Tuple[int, int], optional): Target size (width, height). Defaults to (128, 128).
     """
 
-    with ThreadPoolExecutor(max_workers=os.cpu_count() or 4) as executor:
+    with ThreadPoolExecutor(max_workers=cpu_count() or 4) as executor:
         for image_path, output_path in zip(image_paths, output_paths):
             executor.submit(resize_image, image_path, output_path, size)
 

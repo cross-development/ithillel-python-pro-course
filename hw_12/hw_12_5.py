@@ -4,7 +4,7 @@ Multithreaded File Search.
 This script searches for a keyword in multiple files concurrently using threads.
 """
 
-import threading
+from threading import Thread
 from typing import List
 
 
@@ -43,7 +43,7 @@ def search_in_files(filenames: List[str], keyword: str) -> None:
     threads = []
 
     for filename in filenames:
-        thread = threading.Thread(target=search_in_file, args=(filename, keyword))
+        thread = Thread(target=search_in_file, args=(filename, keyword))
         threads.append(thread)
         thread.start()
 
