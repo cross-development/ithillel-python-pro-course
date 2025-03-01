@@ -38,13 +38,13 @@ class Organism:
 
 
 def simulate_population(population: List[Organism],
-                        results: managers.ListProxy[int], index: int) -> None:
+                        results: managers.ListProxy, index: int) -> None:
     """
     Simulates the survival of a population over multiple iterations.
 
     Args:
         population (List[Organism]): The group of organisms.
-        results (managers.ListProxy[int]): Shared list to store survival results.
+        results (managers.ListProxy): Shared list to store survival results.
         index (int): Index in the results list for this process.
     """
 

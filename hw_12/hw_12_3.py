@@ -8,13 +8,13 @@ from multiprocessing import managers, Manager, Process
 from typing import List
 
 
-def sum_part(numbers: List[int], result: managers.ListProxy[int], index: int) -> None:
+def sum_part(numbers: List[int], result: managers.ListProxy, index: int) -> None:
     """
     Computes the sum of a part of the list and stores it in a shared list.
 
     Args:
         numbers (List[int]): Sublist of numbers to sum.
-        result (managers.ListProxy[int]): Shared list to store results.
+        result (managers.ListProxy): Shared list to store results.
         index (int): Index position in the shared list.
     """
 
