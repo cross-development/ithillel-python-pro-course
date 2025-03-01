@@ -4,18 +4,17 @@ Parallel Sum Calculation.
 This module calculates the sum of a large list using multiprocessing.
 """
 
-import multiprocessing
-from multiprocessing import managers
+from multiprocessing import managers, Manager, Process
 from typing import List
 
 
-def sum_part(numbers: List[int], result: managers.ListProxy, index: int) -> None:
+def sum_part(numbers: List[int], result: managers.ListProxy[int], index: int) -> None:
     """
     Computes the sum of a part of the list and stores it in a shared list.
 
     Args:
         numbers (List[int]): Sublist of numbers to sum.
-        result (managers.ListProxy): Shared list to store results.
+        result (managers.ListProxy[int]): Shared list to store results.
         index (int): Index position in the shared list.
     """
 
@@ -36,14 +35,14 @@ def parallel_sum(numbers: List[int], num_processes: int = 4) -> int:
 
     chunk_size = len(numbers) // num_processes
 
-    with multiprocessing.Manager() as manager:
+    with Manager() as manager:
         result = manager.list([0] * num_processes)
         processes = []
 
         for i in range(num_processes):
             start = i * chunk_size
             end = (i + 1) * chunk_size if i != num_processes - 1 else len(numbers)
-            process = multiprocessing.Process(target=sum_part, args=(numbers[start:end], result, i))
+            process = Process(target=sum_part, args=(numbers[start:end], result, i))
             processes.append(process)
             process.start()
 
