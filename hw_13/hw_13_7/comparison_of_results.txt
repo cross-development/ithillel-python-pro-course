@@ -1,0 +1,7 @@
+1) sync_mode.py - Total time (sync): 85.30 seconds
+2) thread_mode.py - Total time (multithreading): 1.55 seconds
+3) process_mode.py - Total time (multiprocessing): 7.72 seconds
+4) async_mode.py - Total time (async): 0.83 seconds
+
+Conclusion: The asynchronous mode is the most efficient for a large number of requests
+because it minimizes the context switching overhead.
