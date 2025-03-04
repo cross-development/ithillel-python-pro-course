@@ -6,6 +6,7 @@ This script sets up a simple web server with two endpoints:
 """
 
 import asyncio
+
 from aiohttp import web
 
 

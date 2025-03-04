@@ -7,6 +7,15 @@ import random
 import asyncio
 from typing import List
 
+from hw_13.utils import validate_urls
+from hw_13.logger_config import logging
+from hw_13.request_config import CONCURRENT_DOWNLOAD_LIMIT
+
+logger = logging.getLogger(__name__)
+
+# Semaphore to limit the number of concurrent downloads
+semaphore = asyncio.Semaphore(CONCURRENT_DOWNLOAD_LIMIT)
+
 
 async def download_page(url: str) -> None:
     """
@@ -19,10 +28,11 @@ async def download_page(url: str) -> None:
         None
     """
 
-    sleep_time = random.randint(1, 5)
-    await asyncio.sleep(sleep_time)
+    async with semaphore:
+        sleep_time = random.randint(1, 5)
+        await asyncio.sleep(sleep_time)
 
-    print(f"Page {url} has been downloaded in {sleep_time} seconds.")
+        logger.info(f"Page {url} has been downloaded in {sleep_time} seconds.")
 
 
 async def main(urls: List[str]) -> None:
@@ -36,13 +46,25 @@ async def main(urls: List[str]) -> None:
         None
     """
 
-    tasks = [download_page(url) for url in urls]
+    valid_urls = validate_urls(urls)
+
+    if not valid_urls:
+        logger.error("No valid URLs were provided.")
+        return
+
+    tasks = [download_page(url) for url in valid_urls]
     await asyncio.gather(*tasks)
 
 
 if __name__ == "__main__":
-    test_urls = ["https://example.com", "https://test.com", "https://google.com"]
+    test_urls: List[str] = [
+        "https://example.com",
+        "https://test.com",
+        "https://google.com",
+        "https://facebook.com",
+        "https://github.com"
+    ]
 
-    print("Starting downloads...\n")
+    logger.info("Starting downloads...")
     asyncio.run(main(test_urls))
-    print("\nAll downloads completed!")
+    logger.info("All downloads completed!")
