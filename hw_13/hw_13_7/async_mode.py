@@ -8,6 +8,12 @@ from typing import List
 
 import aiohttp
 
+from hw_13.utils import validate_urls
+from hw_13.logger_config import logging
+from hw_13.request_config import NUMBER_OF_REQUESTS, LONG_REQUEST_TIMEOUT
+
+logger = logging.getLogger(__name__)
+
 
 async def async_request(session: aiohttp.ClientSession, url: str) -> int:
     """
@@ -18,11 +24,23 @@ async def async_request(session: aiohttp.ClientSession, url: str) -> int:
         url (str): The target URL.
 
     Returns:
-        int: The HTTP status code of the response.
+        int: The HTTP status code of the response, or -1 if an error occurs.
     """
 
-    async with session.get(url) as response:
-        return response.status
+    try:
+        logger.info(f"Sending request to {url}")
+
+        async with session.get(url, timeout=LONG_REQUEST_TIMEOUT) as response:
+            return response.status
+    except aiohttp.ClientError as e:
+        logger.error(f"Client error occurred while requesting {url}: {e}")
+    except asyncio.TimeoutError:
+        logger.error(f"Request to {url} timed out")
+    except Exception as e:
+        logger.error(f"Unexpected error occurred while requesting {url}: {e}")
+
+    # Return -1 to indicate an error
+    return -1
 
 
 async def main(urls: List[str]) -> None:
@@ -36,17 +54,20 @@ async def main(urls: List[str]) -> None:
         None
     """
 
+    valid_urls = validate_urls(urls)
+    mult_valid_urls = valid_urls * NUMBER_OF_REQUESTS
+
     start_time = asyncio.get_event_loop().time()
-    print("Starting async requests...")
+    logger.info("Starting async requests...")
 
     async with aiohttp.ClientSession() as session:
-        tasks = [async_request(session, url) for url in urls]
+        tasks = [async_request(session, url) for url in mult_valid_urls]
         await asyncio.gather(*tasks)
 
     elapsed_time = asyncio.get_event_loop().time() - start_time
-    print(f"Total time (async): {elapsed_time:.2f} seconds")
+    logger.info(f"Total time (async): {elapsed_time:.2f} seconds")
 
 
 if __name__ == "__main__":
-    test_urls = ["https://jsonplaceholder.typicode.com/todos/"] * 500
+    test_urls = ["https://jsonplaceholder.typicode.com/todos/"]
     asyncio.run(main(test_urls))

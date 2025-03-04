@@ -5,6 +5,11 @@ This script demonstrates how to use asyncio.wait_for() to set a timeout for an a
 
 import asyncio
 
+from hw_13.logger_config import logging
+from hw_13.request_config import SHORT_REQUEST_TIMEOUT
+
+logger = logging.getLogger(__name__)
+
 
 async def slow_task() -> None:
     """
@@ -14,28 +19,44 @@ async def slow_task() -> None:
         None
     """
 
-    await asyncio.sleep(10)
-    print("Task finished")
+    try:
+        logger.info("Slow task started.")
+        await asyncio.sleep(10)
+        logger.info("Slow task finished successfully.")
+    except asyncio.CancelledError:
+        logger.warning("Slow task was cancelled due to timeout!")
+        raise  # Re-raise the CancelledError to propagate it
 
 
 async def main() -> None:
     """
     Runs the slow task with a timeout limit.
     If the task exceeds the given timeout, an asyncio.TimeoutError is raised.
+    Uses asyncio.shield() to allow the task to continue running in the background.
 
     Returns:
         None
     """
 
-    try:
-        print("Starting slow task with a 5-second timeout...")
+    logger.info("Starting slow task with a 5-second timeout...")
 
-        await asyncio.wait_for(slow_task(), timeout=5)
+    task = asyncio.create_task(slow_task())
+
+    try:
+        # Using asyncio.wait_for with shield to protect the task from cancellation
+        await asyncio.wait_for(asyncio.shield(task), timeout=SHORT_REQUEST_TIMEOUT)
     except asyncio.TimeoutError:
-        print("The waiting time has been exceeded!")
+        logger.error("The waiting time has been exceeded! Task is still running in the background.")
+
+        logger.info("Waiting for the background task to finish...")
+        await task  # This ensures the task completes even after the timeout
+    except Exception as e:
+        logger.error(f"Error: unexpected error {e}")
+    else:
+        logger.info("Task completed within the timeout.")
 
 
 if __name__ == "__main__":
-    print("Running the async timeout example...\n")
+    logging.info("Running the async timeout example...")
     asyncio.run(main())
-    print("\nProgram completed!")
+    logging.info("Program completed!")

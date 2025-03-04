@@ -5,6 +5,10 @@ This script demonstrates an asynchronous producer-consumer pattern using asyncio
 
 import asyncio
 
+from hw_13.logger_config import logging
+
+logger = logging.getLogger(__name__)
+
 
 async def producer(queue: asyncio.Queue) -> None:
     """
@@ -17,13 +21,15 @@ async def producer(queue: asyncio.Queue) -> None:
         None
     """
 
-    for i in range(5):
+    number_of_tasks = 5
+
+    for i in range(number_of_tasks):
         await asyncio.sleep(1)
 
         task = f"Task {i + 1}"
         await queue.put(task)
 
-        print(f"Producer added {task}")
+        logging.info(f"Producer added {task}")
 
 
 async def consumer(queue: asyncio.Queue, consumer_id: int) -> None:
@@ -44,9 +50,9 @@ async def consumer(queue: asyncio.Queue, consumer_id: int) -> None:
         if task is None:
             break
 
-        print(f"Consumer {consumer_id} started {task}")
+        logging.info(f"Consumer {consumer_id} started {task}")
         await asyncio.sleep(2)
-        print(f"Consumer {consumer_id} completed {task}")
+        logging.info(f"Consumer {consumer_id} completed {task}")
 
         queue.task_done()
 
@@ -59,10 +65,11 @@ async def main() -> None:
         None
     """
 
+    number_of_consumers = 2
     queue = asyncio.Queue()
 
     # Create consumers
-    consumers = [asyncio.create_task(consumer(queue, i)) for i in range(2)]
+    consumers = [asyncio.create_task(consumer(queue, i)) for i in range(number_of_consumers)]
 
     # Start producer
     await producer(queue)
@@ -78,6 +85,6 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
-    print("Starting Producer-Consumer Process...\n")
+    logging.info("Starting Producer-Consumer Process...")
     asyncio.run(main())
-    print("\nAll tasks completed!")
+    logging.info("All tasks completed!")

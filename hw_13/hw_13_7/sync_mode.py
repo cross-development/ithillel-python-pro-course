@@ -8,6 +8,12 @@ from typing import List
 
 import requests
 
+from hw_13.utils import validate_urls
+from hw_13.logger_config import logging
+from hw_13.request_config import NUMBER_OF_REQUESTS, LONG_REQUEST_TIMEOUT
+
+logger = logging.getLogger(__name__)
+
 
 def sync_request(url: str) -> int:
     """
@@ -17,16 +23,25 @@ def sync_request(url: str) -> int:
         url (str): The target URL.
 
     Returns:
-        int: The HTTP status code of the response.
+        int: The HTTP status code of the response, or -1 if an error occurs.
     """
 
     try:
-        response = requests.get(url, timeout=5)
+        logger.info(f"Sending request to {url}")
 
+        response = requests.get(url, timeout=LONG_REQUEST_TIMEOUT)
         return response.status_code
+    except requests.Timeout:
+        logger.error(f"Request to {url} timed out")
+    except requests.ConnectionError:
+        logger.error(f"Connection error occurred while requesting {url}")
     except requests.RequestException as e:
-        print(f"Error: Failed to fetch {url} - {e}")
-        return 0
+        logger.error(f"Request error occurred while requesting {url}: {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error occurred while requesting {url}: {e}")
+
+    # Return -1 to indicate an error
+    return -1
 
 
 def main(urls: List[str]) -> None:
@@ -40,16 +55,19 @@ def main(urls: List[str]) -> None:
         None
     """
 
-    start_time = time.time()
-    print("Starting synchronous requests...")
+    valid_urls = validate_urls(urls)
+    mult_valid_urls = valid_urls * NUMBER_OF_REQUESTS
 
-    for url in urls:
+    start_time = time.time()
+    logger.info("Starting synchronous requests...")
+
+    for url in mult_valid_urls:
         sync_request(url)
 
     elapsed_time = time.time() - start_time
-    print(f"Total time (sync): {elapsed_time:.2f} seconds")
+    logger.info(f"Total time (sync): {elapsed_time:.2f} seconds")
 
 
 if __name__ == "__main__":
-    test_urls = ["https://jsonplaceholder.typicode.com/todos/"] * 500
+    test_urls = ["https://jsonplaceholder.typicode.com/todos/"]
     main(test_urls)
