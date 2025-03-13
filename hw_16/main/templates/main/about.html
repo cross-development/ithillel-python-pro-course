@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+
+    <p>{{ description|truncatechars:50|safe }}</p>
+
+    <p>Last updated: {{ last_updated|date:"d.m.Y" }}</p>
+
+    <p>We have been operating for {{ years_in_business }} year{{ years_in_business|pluralize }}.</p>
+{% endblock %}
