@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h2 class="card-title">{{ ad.title }}</h2>
+            <p class="card-text">{{ ad.description }}</p>
+            <p class="card-text text-muted">
+                Price: {{ ad.price }} грн |
+                Posted by: <a href="{% url 'user_ads' ad.user.pk %}">{{ ad.user.username }}</a> |
+                Created: {{ ad.created_at }}
+            </p>
+        </div>
+    </div>
+
+    <h3>Comments ({{ comments_count }})</h3>
+
+    <!-- Comment form -->
+    {% if user.is_authenticated %}
+        <div class="card mt-4 mb-2">
+            <div class="card-body">
+                <h4>Add Comment</h4>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    {{ comment_form.as_p }}
+
+                    <button type="submit" class="btn btn-success">Submit Comment</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">log in</a> to add comments.</p>
+    {% endif %}
+
+    <!-- Existing comments -->
+    {% for comment in ad.comments.all %}
+        <div class="card">
+            <div class="card-body">
+                <p>{{ comment.content }}</p>
+
+                <small class="text-muted">
+                    By <a href="{% url 'user_ads' ad.user.pk %}">{{ comment.user.username }}</a>
+                    on {{ comment.created_at }}
+                </small>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

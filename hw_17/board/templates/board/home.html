@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Recent Ads (Last 30 Days)</h2>
+
+    <div class="row">
+        {% for ad in ads %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ad.title }}</h5>
+                        <p class="card-text">{{ ad.short_description }}</p>
+                        <p class="card-text text-muted">{{ ad.price }} usd</p>
+                        <a href="{% url 'ad_detail' ad.pk %}" class="btn btn-primary btn-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No ads yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
