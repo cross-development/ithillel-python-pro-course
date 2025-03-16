@@ -1,0 +1,54 @@
+<!-- statistics.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if user.is_staff %}
+        <div class="container">
+            <h2>Platform Statistics</h2>
+
+            <!-- General Stats -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Overview</h5>
+
+                    <p class="mb-0">Total Ads: {{ total_ads }}</p>
+                    <p class="mb-0">Active Ads: {{ active_ads }}</p>
+                    <p class="mb-0">Inactive Ads: {{ inactive_ads }}</p>
+                </div>
+            </div>
+
+            <!-- Category Breakdown -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Ads by Category</h5>
+                    <ul>
+                        {% for category in categories %}
+                            <li>
+                                {{ category.name }}:
+                                {{ category.ads_count }} ad{{ category.ads_count|pluralize }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Comment Stats -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comment Activity</h5>
+                    <ul>
+                        {% for ad in ads_with_comments %}
+                            <li>
+                                "{{ ad.title }}":
+                                {{ ad.comments_count }} comment{{ ad.comments_count|pluralize }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <h1>404 - Page Not Found</h1>
+        <p>You don't have permission to view this page.</p>
+    {% endif %}
+{% endblock %}
