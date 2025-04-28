@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Rooms</h1>
+
+    <ul class="list-group mb-4">
+        {% for room in rooms %}
+            <li class="list-group-item d-flex justify-content-between">
+                {{ room.name }}
+                <a href="{% url 'chat:room-detail' room.name %}" class="btn btn-primary btn-sm">Join</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" class="d-flex">
+        {% csrf_token %}
+        {{ form.name }}
+        <button type="submit" class="btn btn-success ms-2">Create Room</button>
+    </form>
+{% endblock %}
