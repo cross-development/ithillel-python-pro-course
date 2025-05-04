@@ -1,6 +1,6 @@
 """
 This module defines the XmlToJsonAdapter class, which adapts the XmlHandler and JsonHandler
-interfaces to enable seamless conversion of data between XML and JSON formats.
+presentation to enable seamless conversion of data between XML and JSON formats.
 
 The XmlToJsonAdapter:
 

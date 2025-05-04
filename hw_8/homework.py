@@ -9,7 +9,7 @@ This module demonstrates various Python concepts and features, including:
 - **Abstract Base Classes (ABCs):** Defining and using ABCs.
 - **Metaclasses:** Creating a custom metaclass to prevent inheritance.
 - **TypedDict:** Defining a custom type for data structures.
-- **Protocol definitions:** Defining a protocol for interfaces.
+- **Protocol definitions:** Defining a protocol for presentation.
 - **Generic types:** Using TypeVar for generic types.
 - **Asynchronous programming:** Using `asyncio` for asynchronous tasks.
 - **Unit testing:** Using `doctest` and `pytest` for testing.
