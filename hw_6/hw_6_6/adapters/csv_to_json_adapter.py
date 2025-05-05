@@ -1,6 +1,6 @@
 """
 This module defines the CsvToJsonAdapter class, which adapts the CsvHandler and JsonHandler
-interfaces to enable seamless conversion of data between CSV and JSON formats.
+presentation to enable seamless conversion of data between CSV and JSON formats.
 
 The CsvToJsonAdapter:
 
