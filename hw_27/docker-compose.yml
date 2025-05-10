@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  customer_service:
+    build: ./customer_service
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./customer_service:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - rabbitmq
+    env_file:
+      - ./customer_service/.env
+
+  notification_service:
+    build: ./notification_service
+    command: python manage.py runconsumer
+    volumes:
+      - ./notification_service:/app
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    env_file:
+      - ./notification_service/.env
