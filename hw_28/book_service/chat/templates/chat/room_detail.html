@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Room: {{ room_name }}</h1>
+
+    <div id="chat-log" class="border p-3 mb-3" style="height:300px; overflow-y:scroll;"></div>
+
+    <div class="input-group">
+        <input id="message-input" type="text" class="form-control" placeholder="Message">
+        <button id="send" class="btn btn-success">Send</button>
+    </div>
+
+    <script>
+        const roomName = "{{ room_name }}";
+        const username = "{{ username }}";
+        const socket = new WebSocket(`ws://${window.location.host}/ws/room/${roomName}/`);
+
+        socket.onmessage = e => {
+            const data = JSON.parse(e.data);
+            const log = document.getElementById('chat-log');
+            log.innerHTML += `<div><strong>${data.username}:</strong> ${data.message}</div>`;
+            log.scrollTop = log.scrollHeight;
+        };
+
+        document.getElementById('send').onclick = () => {
+            const input = document.getElementById('message-input');
+            socket.send(JSON.stringify({message: input.value}));
+            input.value = '';
+        };
+    </script>
+{% endblock %}

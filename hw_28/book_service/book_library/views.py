@@ -1,0 +1,73 @@
+"""
+Views for the books app.
+
+This module defines the API views for book-related operations.
+"""
+
+from django.contrib.auth.models import User
+from rest_framework import viewsets, generics
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
+from .models import Book
+from .filters import BookFilter
+from .permissions import IsAdminUserForDeletion
+from .serializers import BookSerializer, UserSerializer
+from celery_tasks.tasks import send_registration_email, send_promo_email
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    """
+    ViewSet for Book model.
+
+    Provides CRUD operations for books with proper permissions.
+    """
+
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    filterset_class = BookFilter
+    search_fields = ('title',)
+    ordering_fields = ('publication_year', 'title')
+    permission_classes = (IsAuthenticated, IsAdminUserForDeletion)
+
+    def perform_create(self, serializer: BookSerializer) -> None:
+        """
+        Associate the current user with the book being created.
+
+        Args:
+            serializer (BookSerializer): The serializer instance.
+        """
+
+        serializer.save(user=self.request.user)
+
+
+class UserRegistrationView(generics.CreateAPIView):
+    """
+    API view for user registration.
+
+    Allows new users to register and sends a welcome email.
+    """
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+
+    def perform_create(self, serializer: UserSerializer) -> None:
+        """
+        Perform user creation and schedule Celery tasks.
+
+        This method is automatically called during the user creation process.
+        It adds asynchronous tasks for:
+        1. Sending a welcome email immediately
+        2. Sending a promotional email after 10 minutes (600 seconds)
+
+        Args:
+            serializer (UserSerializer): The serializer instance containing validated data.
+        """
+
+        user = serializer.save()
+
+        # Schedule welcome email
+        send_registration_email.delay(user.id)
+
+        # Schedule promo email to be sent after 10 minutes (600 seconds)
+        send_promo_email.apply_async(args=[user.id], countdown=600)

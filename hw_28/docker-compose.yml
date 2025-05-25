@@ -1,0 +1,87 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  book_service:
+    build: ./book_service
+    command: uvicorn core.asgi:application --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./book_service:/app
+    ports:
+      - '8000:8000'
+    depends_on:
+      - rabbitmq
+      - book_service_db
+    env_file:
+      - ./book_service/.env
+    restart: unless-stopped
+
+  book_service_db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./book_service/.env
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7.4.2
+    env_file:
+      - ./book_service/.env
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: ./book_service
+    env_file:
+      - ./book_service/.env
+    command: ./book_service/celery_tasks/start_celery.sh
+    depends_on:
+      - redis
+    volumes:
+      - ./book_service:/app
+
+  celery_beat:
+    build: ./book_service
+    command: ./book_service/celery_tasks/start_celery_beat.sh
+    volumes:
+      - ./book_service:/app
+    depends_on:
+      - redis
+
+  flower:
+    image: mher/flower:2.0.1
+    env_file:
+      - ./book_service/.env
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis
+
+  notification_service:
+    build: ./notification_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001
+    volumes:
+      - ./notification_service:/app
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    env_file:
+      - ./notification_service/.env
+
+volumes:
+  postgres_data:
+  media_data:
